@@ -1,233 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Game Art Portfolio</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
     <!-- Custom Cursor -->
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
-    
+
     <!-- Navigation -->
     <nav class="main-nav">
-        <div class="logo">
-            <span class="artist-name">Nakul Maniar</span>
-        </div>
-        <div class="menu-toggle">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#hero" data-text="Home">Home</a></li>
-            <li><a href="#about" data-text="About">About</a></li>
-            <li><a href="#experience" data-text="Experience">Experience</a></li>
-            <li><a href="#portfolio" data-text="Work">My Work</a></li>
-            <li><a href="#contact" data-text="Contact">Contact</a></li>
-        </ul>
+      <div class="logo">
+        <span class="artist-name">Nakul Maniar</span>
+      </div>
+      <div class="menu-toggle">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#hero" data-text="Home">Home</a></li>
+        <li><a href="#about" data-text="About">About</a></li>
+        <li><a href="#experience" data-text="Experience">Experience</a></li>
+        <li><a href="#portfolio" data-text="Work">My Work</a></li>
+        <li><a href="#contact" data-text="Contact">Contact</a></li>
+      </ul>
     </nav>
 
     <!-- Hero Section -->
     <section id="hero" class="hero-section">
-        <div class="hero-content">
-            <div class="artist-image-container">
-                <div class="artist-image-wrapper">
-                    <img src="assets/images/artist-profile.jpg" alt="Nakul Maniar" class="artist-image">
-                </div>
-                <div class="image-effects">
-                    <div class="effect-circle"></div>
-                    <div class="effect-circle"></div>
-                    <div class="effect-circle"></div>
-                </div>
-            </div>
-            <div class="hero-text">
-                <h1 class="glitch-effect" data-text="Nakul Maniar">Nakul Maniar</h1>
-                <p class="typewriter">Bringing digital worlds to life through art</p>
-                <div class="art-categories">
-                    <span>Characters</span>
-                    <span>Backgrounds</span>
-                    <span>Gen AI</span>
-                    <span>Concepts</span>
-                </div>
-                <a href="#portfolio" class="cta-button">Explore My Work</a>
-            </div>
+      <div class="hero-content">
+        <div class="artist-image-container">
+          <div class="artist-image-wrapper">
+            <img
+              src="assets/images/artist.webp"
+              alt="Nakul Maniar"
+              class="artist-image"
+            />
+          </div>
+          <div class="image-effects">
+            <div class="effect-circle"></div>
+            <div class="effect-circle"></div>
+            <div class="effect-circle"></div>
+          </div>
         </div>
-        <canvas id="hero-canvas"></canvas>
+        <div class="hero-text">
+          <h1 class="glitch-effect" data-text="Nakul Maniar">Nakul Maniar</h1>
+          <p class="typewriter">Bringing digital worlds to life through art</p>
+          <div class="art-categories">
+            <span>Characters</span>
+            <span>Backgrounds</span>
+            <span>Gen AI</span>
+            <span>Concepts</span>
+          </div>
+          <a href="#portfolio" class="cta-button">Explore My Work</a>
+        </div>
+      </div>
+      <canvas id="hero-canvas"></canvas>
     </section>
 
     <!-- About Section -->
     <section id="about" class="about-section">
-        <div class="section-header">
-            <h2>About Me</h2>
-            <div class="brush-stroke"></div>
+      <div class="section-header">
+        <h2>About Me</h2>
+        <div class="brush-stroke"></div>
+      </div>
+      <div class="about-content">
+        <div class="about-text">
+          <p style="text-align: justify;">
+            I'm Nakul Maniar, a Game Artist, concept artist and Unity Developer
+            with 2.5+ years of experience crafting engaging visuals and
+            gameplay. I’ve worked on popular titles like Indian Cooking Star and
+            Merge Fever, blending creativity with technical skill. With a strong
+            eye for design, color theory, and UI/UX, I bring ideas to life—from
+            game assets to event leadership.
+          </p>
         </div>
-        <div class="about-content">
-            <div class="about-text">
-                <p>I am a passionate game artist with expertise in creating immersive visual experiences. My journey in digital art began...</p>
-                <p>I specialize in bringing characters to life and creating worlds that tell stories without words.</p>
+        <div class="skills-container">
+          <h3>Skills & Tools</h3>
+          <div class="skills-graph">
+            <div class="skill-item" data-skill="Character Art">
+              <div class="skill-fill" style="width: 95%"></div>
+              <span>Character Art</span>
             </div>
-            <div class="skills-container">
-                <h3>Skills & Tools</h3>
-                <div class="skills-graph">
-                    <div class="skill-item" data-skill="Character Art">
-                        <div class="skill-fill" style="width:95%"></div>
-                        <span>Character Art</span>
-                    </div>
-                    <div class="skill-item" data-skill="Background Design">
-                        <div class="skill-fill" style="width:85%"></div>
-                        <span>Background Design</span>
-                    </div>
-                    <div class="skill-item" data-skill="Gen_Ai">
-                        <div class="skill-fill" style="width:80%"></div>
-                        <span>Gen AI</span>
-                    </div>
-                    <div class="skill-item" data-skill="Concept Art">
-                        <div class="skill-fill" style="width:90%"></div>
-                        <span>Concept Art</span>
-                    </div>
-                </div>
+            <div class="skill-item" data-skill="Background Design">
+              <div class="skill-fill" style="width: 85%"></div>
+              <span>Background Design</span>
             </div>
+            <div class="skill-item" data-skill="Gen_Ai">
+              <div class="skill-fill" style="width: 80%"></div>
+              <span>Gen AI</span>
+            </div>
+            <div class="skill-item" data-skill="Concept Art">
+              <div class="skill-fill" style="width: 90%"></div>
+              <span>Concept Art</span>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Experience Section -->
     <section id="experience" class="experience-section">
-        <div class="section-header">
-            <h2>Experience</h2>
-            <div class="brush-stroke"></div>
+      <div class="section-header">
+        <h2>Experience</h2>
+        <div class="brush-stroke"></div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h3>Freelancing</h3>
+            <h4>Self employed</h4>
+            <span class="date">2024 - Present</span>
+            <p>Working as Game Artist</p>
+          </div>
         </div>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-marker"></div>
-                <div class="timeline-content">
-                    <h3>Senior Game Artist</h3>
-                    <h4>Studio Name</h4>
-                    <span class="date">2020 - Present</span>
-                    <p>Lead artist for multiple game projects, specializing in character design and world-building.</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-marker"></div>
-                <div class="timeline-content">
-                    <h3>Concept Artist</h3>
-                    <h4>Game Company</h4>
-                    <span class="date">2017 - 2020</span>
-                    <p>Created concept art for characters and environments for various mobile game titles.</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-marker"></div>
-                <div class="timeline-content">
-                    <h3>Freelance Artist</h3>
-                    <h4>Self-employed</h4>
-                    <span class="date">2015 - 2017</span>
-                    <p>Worked with indie game developers to create unique art assets for their projects.</p>
-                </div>
-            </div>
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h3>The App Guruz</h3>
+            <h4>Game Artist & Concept Artist</h4>
+            <span class="date">2021 - 2024</span>
+            <p>
+              I have worked in realworld project during this period some of my
+              games are <br />- Indian cooking star<br />- style and makeover<br />-
+              Merge Fever
+            </p>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio-section">
-        <div class="section-header">
-            <h2>My Work</h2>
-            <div class="brush-stroke"></div>
-        </div>
-        <div class="portfolio-filter">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="characters">Characters</button>
-            <button class="filter-btn" data-filter="backgrounds">Backgrounds</button>
-            <button class="filter-btn" data-filter="Gen_Ai">Gen AI</button>
-            <button class="filter-btn" data-filter="concepts">Concepts</button>
-            <button class="filter-btn" data-filter="icons">Icons</button>
-            <button class="filter-btn" data-filter="animals">Animals</button>
-            <button class="filter-btn" data-filter="meta">Meta</button>
-            <button class="filter-btn" data-filter="food">Food</button>
-        </div>
-        <div class="portfolio-grid">
-            <!-- Portfolio items will be generated by JavaScript -->
-        </div>
-        <div class="portfolio-modal">
-            <div class="modal-content">
-                <span class="close-modal">&times;</span>
-                <div class="modal-image-container">
-                    <img src="" alt="" class="modal-image">
-                </div>
-                <div class="modal-info">
-                    <h3 class="modal-title"></h3>
-                    <p class="modal-description"></p>
-                    <div class="modal-details">
-                        <span class="modal-category"></span>
-                        <!-- <span class="modal-date"></span> -->
-                    </div>
-                </div>
-                <div class="modal-navigation">
-                    <button class="modal-prev">Previous</button>
-                    <button class="modal-next">Next</button>
-                </div>
+      <div class="section-header">
+        <h2>My Work</h2>
+        <div class="brush-stroke"></div>
+      </div>
+      <div class="portfolio-filter">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="characters">Characters</button>
+        <button class="filter-btn" data-filter="backgrounds">
+          Backgrounds
+        </button>
+        <button class="filter-btn" data-filter="Gen_Ai">Gen AI</button>
+        <button class="filter-btn" data-filter="concepts">Concepts</button>
+        <button class="filter-btn" data-filter="icons">Icons</button>
+        <button class="filter-btn" data-filter="animals">Animals</button>
+        <button class="filter-btn" data-filter="meta">Meta</button>
+        <button class="filter-btn" data-filter="food">Food</button>
+      </div>
+      <div class="portfolio-grid">
+        <!-- Portfolio items will be generated by JavaScript -->
+      </div>
+      <div class="portfolio-modal">
+        <div class="modal-content">
+          <span class="close-modal">&times;</span>
+          <div class="modal-image-container">
+            <img src="" alt="" class="modal-image" />
+          </div>
+          <div class="modal-info">
+            <h3 class="modal-title"></h3>
+            <p class="modal-description"></p>
+            <div class="modal-details">
+              <span class="modal-category"></span>
+              <!-- <span class="modal-date"></span> -->
             </div>
+          </div>
+          <div class="modal-navigation">
+            <button class="modal-prev">Previous</button>
+            <button class="modal-next">Next</button>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
-        <div class="section-header">
-            <h2>Get In Touch</h2>
-            <div class="brush-stroke"></div>
+      <div class="section-header">
+        <h2>Get In Touch</h2>
+        <div class="brush-stroke"></div>
+      </div>
+      <div class="contact-container">
+        <div class="contact-info">
+          <h3>Let's Create Something Amazing</h3>
+          <p>Interested in working together or have questions about my work?</p>
+          <div class="info-item">
+            <i class="fas fa-envelope"></i>
+            <span>your.email@example.com</span>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-phone"></i>
+            <span>+1 234 567 890</span>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-icon"
+              ><i class="fab fa-artstation"></i
+            ></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          </div>
         </div>
-        <div class="contact-container">
-            <div class="contact-info">
-                <h3>Let's Create Something Amazing</h3>
-                <p>Interested in working together or have questions about my work?</p>
-                <div class="info-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>your.email@example.com</span>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-phone"></i>
-                    <span>+1 234 567 890</span>
-                </div>
-                <div class="social-links">
-                    <a href="#" class="social-icon"><i class="fab fa-artstation"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                </div>
-            </div>
-            <form class="contact-form">
-                <div class="form-group">
-                    <input type="text" id="name" placeholder="Your Name">
-                    <div class="input-animation"></div>
-                </div>
-                <div class="form-group">
-                    <input type="email" id="email" placeholder="Your Email">
-                    <div class="input-animation"></div>
-                </div>
-                <div class="form-group">
-                    <input type="text" id="subject" placeholder="Subject">
-                    <div class="input-animation"></div>
-                </div>
-                <div class="form-group">
-                    <textarea id="message" placeholder="Your Message"></textarea>
-                    <div class="input-animation"></div>
-                </div>
-                <button type="submit" class="submit-btn">
-                    <span>Send Message</span>
-                    <div class="btn-animation"></div>
-                </button>
-            </form>
-        </div>
+        <form class="contact-form">
+          <div class="form-group">
+            <input type="text" id="name" placeholder="Your Name" />
+            <div class="input-animation"></div>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" placeholder="Your Email" />
+            <div class="input-animation"></div>
+          </div>
+          <div class="form-group">
+            <input type="text" id="subject" placeholder="Subject" />
+            <div class="input-animation"></div>
+          </div>
+          <div class="form-group">
+            <textarea id="message" placeholder="Your Message"></textarea>
+            <div class="input-animation"></div>
+          </div>
+          <button type="submit" class="submit-btn">
+            <span>Send Message</span>
+            <div class="btn-animation"></div>
+          </button>
+        </form>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="main-footer">
-        <div class="footer-content">
-            <p>&copy; 2023 Game Artist Portfolio. All Rights Reserved. Designed and Devloped by <a href="https://github.com/nimeshkadecha"> Nimesh Kadecha</a> </p>
-        </div>
+      <div class="footer-content">
+        <p>
+          &copy; 2023 Game Artist Portfolio. All Rights Reserved. Designed and
+          Devloped by
+          <a href="https://github.com/nimeshkadecha"> Nimesh Kadecha</a>
+        </p>
+      </div>
     </footer>
 
     <!-- Scripts -->
@@ -238,5 +256,5 @@
     <script src="js/animations.js"></script>
     <script src="js/portfolio.js"></script>
     <script src="js/main.js"></script>
-</body>
+  </body>
 </html>
