@@ -6,9 +6,8 @@ const portfolioItems = [
     description:
       "A detailed character design for a fantasy RPG game featuring intricate armor and weapon details.",
     category: "characters",
-    thumbnail: "assets/portfolio/thumbnails/character1.jpg",
-    image: "assets/portfolio/character1.jpg",
-    date: "June 2023",
+    thumbnail: "assets/portfolio/thumbnails/char1.webp",
+    image: "assets/portfolio/char1.webp",
   },
   {
     id: 2,
@@ -18,7 +17,6 @@ const portfolioItems = [
     category: "backgrounds",
     thumbnail: "assets/portfolio/thumbnails/background1.jpg",
     image: "assets/portfolio/background1.jpg",
-    date: "May 2023",
   },
   {
     id: 3,
@@ -28,7 +26,6 @@ const portfolioItems = [
     category: "ui",
     thumbnail: "assets/portfolio/thumbnails/ui1.jpg",
     image: "assets/portfolio/ui1.jpg",
-    date: "April 2023",
   },
   {
     id: 4,
@@ -38,7 +35,6 @@ const portfolioItems = [
     category: "concepts",
     thumbnail: "assets/portfolio/thumbnails/concept1.jpg",
     image: "assets/portfolio/concept1.jpg",
-    date: "March 2023",
   },
   {
     id: 5,
@@ -48,7 +44,6 @@ const portfolioItems = [
     category: "backgrounds",
     thumbnail: "assets/portfolio/thumbnails/background2.jpg",
     image: "assets/portfolio/background2.jpg",
-    date: "February 2023",
   },
   {
     id: 6,
@@ -58,7 +53,6 @@ const portfolioItems = [
     category: "icons",
     thumbnail: "assets/portfolio/thumbnails/icons1.jpg",
     image: "assets/portfolio/icons1.jpg",
-    date: "January 2023",
   },
   {
     id: 7,
@@ -68,7 +62,6 @@ const portfolioItems = [
     category: "characters",
     thumbnail: "assets/portfolio/thumbnails/character2.jpg",
     image: "assets/portfolio/character2.jpg",
-    date: "December 2022",
   },
   {
     id: 8,
@@ -78,7 +71,6 @@ const portfolioItems = [
     category: "animals",
     thumbnail: "assets/portfolio/thumbnails/animal1.jpg",
     image: "assets/portfolio/animal1.jpg",
-    date: "November 2022",
   },
   {
     id: 9,
@@ -88,7 +80,6 @@ const portfolioItems = [
     category: "food",
     thumbnail: "assets/portfolio/thumbnails/food1.jpg",
     image: "assets/portfolio/food1.jpg",
-    date: "October 2022",
   },
 ];
 
@@ -453,30 +444,40 @@ function initPortfolio() {
     const modalTitle = modal.querySelector(".modal-title");
     const modalDesc = modal.querySelector(".modal-description");
     const modalCategory = modal.querySelector(".modal-category");
-    const modalDate = modal.querySelector(".modal-date");
+    // const modalDate = modal.querySelector(".modal-date");
 
     // Show loading state
     if (modalImage) {
       modalImage.classList.add("loading");
       modalImage.src = item.thumbnail; // Show thumbnail first
 
-      // Then load the full image
-      const fullImg = preloadedImages.get(item.id) || new Image();
-      if (!preloadedImages.has(item.id)) {
-        fullImg.src = item.image;
-        preloadedImages.set(item.id, fullImg);
-      }
-
-      fullImg.onload = function () {
+      // Always update to full image regardless of preloading status
+      const updateFullImage = () => {
         modalImage.src = item.image;
         modalImage.classList.remove("loading");
       };
+
+      // Check if image is already preloaded
+      if (preloadedImages.has(item.id)) {
+        // If already preloaded, switch to full image immediately
+        setTimeout(updateFullImage, 100); // Small timeout for smoother transition
+      } else {
+        // If not preloaded, load it now
+        const fullImg = new Image();
+        fullImg.onload = updateFullImage;
+        fullImg.onerror = () => {
+          console.warn(`Failed to load image: ${item.image}`);
+          modalImage.classList.remove("loading");
+        };
+        fullImg.src = item.image;
+        preloadedImages.set(item.id, fullImg);
+      }
     }
 
     if (modalTitle) modalTitle.textContent = item.title;
     if (modalDesc) modalDesc.textContent = item.description;
     if (modalCategory) modalCategory.textContent = `Category: ${item.category}`;
-    if (modalDate) modalDate.textContent = `Created: ${item.date}`;
+    // if (modalDate) modalDate.textContent = `Created: ${item.date}`;
 
     // Show modal with animation
     modal.classList.add("active");
@@ -560,10 +561,10 @@ function initPortfolio() {
     const modalTitle = modal.querySelector(".modal-title");
     const modalDesc = modal.querySelector(".modal-description");
     const modalCategory = modal.querySelector(".modal-category");
-    const modalDate = modal.querySelector(".modal-date");
+    // const modalDate = modal.querySelector(".modal-date");
 
     // Fade out current content
-    gsap.to([modalTitle, modalDesc, modalCategory, modalDate], {
+    gsap.to([modalTitle, modalDesc, modalCategory], {
       opacity: 0,
       y: direction === "next" ? -20 : 20,
       duration: 0.3,
@@ -597,10 +598,10 @@ function initPortfolio() {
         if (modalDesc) modalDesc.textContent = newItem.description;
         if (modalCategory)
           modalCategory.textContent = `Category: ${newItem.category}`;
-        if (modalDate) modalDate.textContent = `Created: ${newItem.date}`;
+        // if (modalDate) modalDate.textContent = `Created: ${newItem.date}`;
 
         // Fade in new content
-        gsap.to([modalTitle, modalDesc, modalCategory, modalDate], {
+        gsap.to([modalTitle, modalDesc, modalCategory], {
           opacity: 1,
           y: 0,
           duration: 0.3,
