@@ -1091,26 +1091,37 @@ section {
     padding: 80px 20px;
   }
   
+  .main-nav {
+    mix-blend-mode: normal; /* Disable the mix-blend-mode for mobile */
+  }
+  
   .nav-links {
     position: fixed;
     top: 0;
-    right: -100%;
+    left: 0; /* Changed from right: -100% to left: 0 and will use transform for the animation */
     height: 100vh;
-    width: 70%;
-    background-color: rgba(45, 52, 54, 0.95);
+    width: 100%; /* Changed from 70% to 100% to cover full screen */
+    background-color: rgb(45, 52, 54); /* Solid background color */
     flex-direction: column;
     align-items: center;
     justify-content: center;
     transition: var(--transition);
+    transform: translateX(100%); /* Move it off-screen initially */
+    z-index: 999;
   }
   
   .nav-active {
+    transform: translateX(0); /* Bring it into view */
     right: 0;
+  }
+  
+  body:has(.nav-active) {
+    overflow: hidden; /* Prevent scrolling when menu is open */
   }
   
   .menu-toggle {
     display: block;
-    z-index: 1001;
+    z-index: 1001; /* Higher than nav-links to stay on top */
   }
   
   .timeline::before {
