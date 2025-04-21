@@ -76,7 +76,7 @@ const portfolioItems = [
     id: 9,
     title: "Apple tree lifecycle",
     description:
-      "Complete apple tree growth progression from sapling to fruit-bearing tree, illustrating lifecycle mechanics for farming gameplay.",
+      "Stylized apple tree lifecycle illustration showing vibrant seasonal transitions from bloom to bare.",
     category: "meta",
     thumbnail: "assets/portfolio/thumbnails/appleTreeLifeCycle.webp",
     image: "assets/portfolio/appleTreeLifeCycle.webp",
@@ -94,7 +94,7 @@ const portfolioItems = [
     id: 11,
     title: "Halloween Merge-3 Icon",
     description:
-      "Spooky-themed match-3 game icon with Halloween elements and bold typography creating a festive yet engaging visual identity.",
+      "Halloween-themed game icon featuring a mischievous jack-o'-lantern with a top hat, set against a moonlit, eerie backdrop.",
     category: "icons",
     thumbnail: "assets/portfolio/thumbnails/hallowenMerge3Icon.webp",
     image: "assets/portfolio/hallowenMerge3Icon.webp",
@@ -148,7 +148,7 @@ const portfolioItems = [
     id: 17,
     title: "Phoenix life stage",
     description:
-      "Mythical phoenix character illustrated in multiple life stages from egg to majestic adult, showing progression for collection-based gameplay.",
+      "Fiery phoenix life stages, from cute hatchling to majestic flame-winged rebirth.",
     category: "animals",
     thumbnail: "assets/portfolio/thumbnails/phonex.webp",
     image: "assets/portfolio/phonex.webp",
@@ -166,7 +166,7 @@ const portfolioItems = [
     id: 19,
     title: "Water Pond",
     description:
-      "Decorative water pond asset with layered details creating depth and tranquil atmosphere for garden or nature-themed gameplay environments.",
+      "From tiny sprout to golden harvest—watch your corn thrive through every vibrant stage!",
     category: "meta",
     thumbnail: "assets/portfolio/thumbnails/waterPond.webp",
     image: "assets/portfolio/waterPond.webp",
