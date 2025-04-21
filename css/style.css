@@ -731,6 +731,7 @@ section {
   opacity: 0;
   visibility: hidden;
   transition: var(--transition);
+  cursor: pointer; /* Indicate it's clickable */
 }
 
 .modal-content {
@@ -740,13 +741,15 @@ section {
   max-height: 90vh;
   background-color: #222;
   border-radius: 15px;
-  overflow: hidden;
+  overflow: auto; /* Allow scrolling for content */
   display: flex;
   flex-direction: column;
   transform: scale(0.9);
   transition: var(--transition);
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: default; /* Reset cursor for modal content */
+  z-index: 2001; /* Ensure content is above the modal background */
 }
 
 .portfolio-modal.active {
@@ -884,12 +887,15 @@ section {
   transition: opacity 0.3s ease;
 }
 
+/* Add highlight effect for navigation buttons to indicate they're clickable */
 .modal-navigation button:hover {
   border-color: transparent;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-.modal-navigation button:hover::before {
-  opacity: 1;
+.modal-navigation button:active {
+  transform: translateY(0);
 }
 
 .modal-prev::before {

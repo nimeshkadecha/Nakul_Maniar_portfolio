@@ -404,7 +404,7 @@ function initPortfolio() {
     });
   }
 
-  // Enhanced modal open animation
+  // Enhanced modal functionality
   function openModal(itemId) {
     if (!modal) return;
 
@@ -427,61 +427,44 @@ function initPortfolio() {
     if (modalCategory) modalCategory.textContent = `Category: ${item.category}`;
     if (modalDate) modalDate.textContent = `Created: ${item.date}`;
 
-    // Show modal with enhanced animation
-    modal.style.display = "flex";
-    document.body.style.overflow = "hidden";
-
-    const modalContent = modal.querySelector(".modal-content");
-
-    // Create an impressive entrance animation
-    gsap.set(modal, { visibility: "visible", opacity: 0 });
-    gsap.set(modalContent, {
-      opacity: 0,
-      y: 100,
-      scale: 0.8,
-      rotationX: 15,
-    });
-
-    const modalTl = gsap.timeline({
-      defaults: { ease: "power3.out" },
-    });
-
-    modalTl.to(modal, {
-      opacity: 1,
-      duration: 0.4,
-    });
-
-    modalTl.to(
-      modalContent,
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        rotationX: 0,
-        duration: 0.6,
-        ease: "back.out(1.7)",
-      },
-      "-=0.2"
-    );
-
-    // Animate image reveal
-    if (modalImage) {
-      gsap.fromTo(
-        modalImage,
-        { opacity: 0, scale: 1.2 },
-        { opacity: 1, scale: 1, duration: 1, delay: 0.3, ease: "power2.out" }
-      );
-    }
-
+    // Show modal with animation
     modal.classList.add("active");
+    document.body.style.overflow = "hidden";
   }
 
-  // Handle modal navigation with smooth transitions
+  // Close modal function
+  function closeModal() {
+    if (modal) {
+      modal.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+  }
+
+  // Close modal when clicking on close button
+  const closeModalBtn = modal ? modal.querySelector(".close-modal") : null;
+  if (closeModalBtn) {
+    closeModalBtn.addEventListener("click", closeModal);
+  }
+
+  // Close modal when clicking outside of modal content
+  if (modal) {
+    modal.addEventListener("click", function (e) {
+      // Only close if the click is directly on the modal background
+      // and not on any of its children
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+  }
+
+  // Modal navigation with fixed functionality
   function navigateModal(direction) {
     let filteredItems =
       currentCategory === "all"
         ? portfolioItems
         : portfolioItems.filter((item) => item.category === currentCategory);
+
+    if (filteredItems.length === 0) return;
 
     let newIndex;
     if (direction === "next") {
@@ -493,56 +476,80 @@ function initPortfolio() {
           : currentItemIndex - 1;
     }
 
-    const newItem = filteredItems[newIndex];
+    // Find the item in the entire portfolioItems array
+    const newItemId = filteredItems[newIndex].id;
+    const newItem = portfolioItems.find((item) => item.id === newItemId);
     currentItemIndex = portfolioItems.indexOf(newItem);
 
-    // Enhanced animation for modal content changes
-    const modalContent = modal.querySelector(".modal-content");
+    // Update modal content with animation
     const modalImage = modal.querySelector(".modal-image");
-    const modalInfo = modal.querySelector(".modal-info");
+    const modalTitle = modal.querySelector(".modal-title");
+    const modalDesc = modal.querySelector(".modal-description");
+    const modalCategory = modal.querySelector(".modal-category");
+    const modalDate = modal.querySelector(".modal-date");
 
-    const tl = gsap.timeline({
-      defaults: { ease: "power2.inOut" },
-    });
-
-    // Animate current content out
-    tl.to([modalImage, modalInfo], {
+    // Fade out current content
+    gsap.to([modalImage, modalTitle, modalDesc, modalCategory, modalDate], {
       opacity: 0,
-      x: direction === "next" ? -30 : 30,
+      y: direction === "next" ? -20 : 20,
       duration: 0.3,
-      stagger: 0.1,
-    });
-
-    tl.call(() => {
-      // Update modal content here with the new item data
-      if (modalImage) modalImage.src = newItem.image;
-      if (modalInfo) {
-        const modalTitle = modal.querySelector(".modal-title");
-        const modalDesc = modal.querySelector(".modal-description");
-        const modalCategory = modal.querySelector(".modal-category");
-        const modalDate = modal.querySelector(".modal-date");
-
+      onComplete: () => {
+        // Update content
+        if (modalImage) modalImage.src = newItem.image;
         if (modalTitle) modalTitle.textContent = newItem.title;
         if (modalDesc) modalDesc.textContent = newItem.description;
         if (modalCategory)
           modalCategory.textContent = `Category: ${newItem.category}`;
         if (modalDate) modalDate.textContent = `Created: ${newItem.date}`;
-      }
 
-      // Reset position for new content
-      gsap.set([modalImage, modalInfo], {
-        x: direction === "next" ? 30 : -30,
-      });
-    });
-
-    // Animate new content in
-    tl.to([modalImage, modalInfo], {
-      opacity: 1,
-      x: 0,
-      duration: 0.4,
-      stagger: 0.1,
+        // Fade in new content
+        gsap.to([modalImage, modalTitle, modalDesc, modalCategory, modalDate], {
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+        });
+      },
     });
   }
+
+  // Fix modal navigation button click handlers
+  const prevButton = modal ? modal.querySelector(".modal-prev") : null;
+  const nextButton = modal ? modal.querySelector(".modal-next") : null;
+
+  if (prevButton) {
+    // Remove any existing event listeners to avoid duplicates
+    prevButton.replaceWith(prevButton.cloneNode(true));
+    // Get the new button reference
+    const newPrevButton = modal.querySelector(".modal-prev");
+    // Add event listener
+    newPrevButton.addEventListener("click", () => {
+      navigateModal("prev");
+    });
+  }
+
+  if (nextButton) {
+    // Remove any existing event listeners to avoid duplicates
+    nextButton.replaceWith(nextButton.cloneNode(true));
+    // Get the new button reference
+    const newNextButton = modal.querySelector(".modal-next");
+    // Add event listener
+    newNextButton.addEventListener("click", () => {
+      navigateModal("next");
+    });
+  }
+
+  // Add keyboard navigation for modal
+  document.addEventListener("keydown", function (e) {
+    if (!modal.classList.contains("active")) return;
+
+    if (e.key === "Escape") {
+      closeModal();
+    } else if (e.key === "ArrowLeft") {
+      navigateModal("prev");
+    } else if (e.key === "ArrowRight") {
+      navigateModal("next");
+    }
+  });
 
   // Initialize portfolio with all items
   renderPortfolioItems("all");
