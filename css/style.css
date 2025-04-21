@@ -438,6 +438,8 @@ section {
 
 .skills-container {
   flex: 1;
+  text-align: center;
+  width: 90%;
 }
 
 .skills-container h3 {
