@@ -2,7 +2,7 @@
 const portfolioItems = [
   {
     id: 1,
-    title: "Fantasy Character Design",
+    title: "Character",
     description:
       "A detailed character design for a fantasy RPG game featuring intricate armor and weapon details.",
     category: "characters",
@@ -20,21 +20,21 @@ const portfolioItems = [
   },
   {
     id: 3,
-    title: "Cat merge2 icon",
+    title: "Cat merge-2 icon",
     description:
       "User interface design for a space exploration game with futuristic elements and glow effects.",
     category: "icons",
     thumbnail: "assets/portfolio/thumbnails/catIcon.webp",
-    image: "assets/portfolio/Gen AI1.jpg",
+    image: "assets/portfolio/catIcon.webp",
   },
   {
     id: 4,
-    title: "Cooking Veli Loading screen",
+    title: "Cooking Valley Loading screen",
     description:
       "Multiple concept explorations for a dragon character with different color variations and poses.",
     category: "backgrounds",
     thumbnail: "assets/portfolio/thumbnails/cookingVeli.webp",
-    image: "assets/portfolio/concept1.jpg",
+    image: "assets/portfolio/cookingVeli.webp",
   },
   {
     id: 5,
@@ -43,7 +43,7 @@ const portfolioItems = [
       "Detailed medieval village environment with atmospheric lighting and detailed architecture.",
     category: "backgrounds",
     thumbnail: "assets/portfolio/thumbnails/storyBoard.webp",
-    image: "assets/portfolio/background2.jpg",
+    image: "assets/portfolio/storyBoard.webp",
   },
   {
     id: 6,
@@ -52,25 +52,25 @@ const portfolioItems = [
       "Icon set for player abilities and skills with glowing effects and distinctive silhouettes.",
     category: "concepts",
     thumbnail: "assets/portfolio/thumbnails/cookingresturentConcept.webp",
-    image: "assets/portfolio/icons1.jpg",
+    image: "assets/portfolio/cookingresturentConcept.webp",
   },
   {
     id: 7,
-    title: "coconut Tree Concept",
+    title: "Coconut Tree Concept",
     description:
       "Character design for a sci-fi game featuring advanced armor and weapon systems.",
     category: "concepts",
     thumbnail: "assets/portfolio/thumbnails/coconutTreeConcept.webp",
-    image: "assets/portfolio/character2.jpg",
+    image: "assets/portfolio/coconutTreeConcept.webp",
   },
   {
     id: 8,
-    title: "barrel Concept",
+    title: "Barrel Concept",
     description:
       "Collection of mythical creature designs with detailed anatomy and texture work.",
     category: "concepts",
     thumbnail: "assets/portfolio/thumbnails/beral.webp",
-    image: "assets/portfolio/animal1.jpg",
+    image: "assets/portfolio/beral.webp",
   },
   {
     id: 9,
@@ -79,7 +79,7 @@ const portfolioItems = [
       "Set of food items for a survival crafting game with painterly style.",
     category: "meta", // animal, food, characters, backgrounds, icons, concept, meta
     thumbnail: "assets/portfolio/thumbnails/appleTreeLifeCycle.webp",
-    image: "assets/portfolio/food1.jpg",
+    image: "assets/portfolio/appleTreeLifeCycle.webp",
   },
   {
     id: 10,
@@ -88,7 +88,7 @@ const portfolioItems = [
       "Set of food items for a survival crafting game with painterly style.",
     category: "icons",
     thumbnail: "assets/portfolio/thumbnails/ludoPlayIcon.webp",
-    image: "assets/portfolio/food1.jpg",
+    image: "assets/portfolio/ludoPlayIcon.webp",
   },
   {
     id: 11,
@@ -97,64 +97,145 @@ const portfolioItems = [
       "Set of food items for a survival crafting game with painterly style.",
     category: "icons",
     thumbnail: "assets/portfolio/thumbnails/hallowenMerge3Icon.webp",
-    image: "assets/portfolio/food1.jpg",
+    image: "assets/portfolio/hallowenMerge3Icon.webp",
   },
 
   {
     id: 12,
-    title: "Cooking game map part 1",
+    title: "Cooking game map part-1",
     description:
       "Set of food items for a survival crafting game with painterly style.",
     category: "backgrounds",
     thumbnail: "assets/portfolio/thumbnails/mapPart1.webp",
-    image: "assets/portfolio/food1.jpg",
+    image: "assets/portfolio/mapPart1.webp",
   },
   {
     id: 13,
-    title: "Cooking game map part 2",
+    title: "Cooking game map part-2",
     description:
       "Set of food items for a survival crafting game with painterly style.",
     category: "backgrounds",
     thumbnail: "assets/portfolio/thumbnails/mapPart2.webp",
-    image: "assets/portfolio/food1.jpg",
+    image: "assets/portfolio/mapPart2.webp",
   },
   {
     id: 14,
-    title: "Cooking game map part 3",
+    title: "Cooking game map part-3",
     description:
       "Set of food items for a survival crafting game with painterly style.",
     category: "backgrounds",
     thumbnail: "assets/portfolio/thumbnails/mapPart3.webp",
-    image: "assets/portfolio/food1.jpg",
+    image: "assets/portfolio/mapPart3.webp",
   },
 
   {
     id: 15,
-    title: "Make over game icon ",
+    title: "Makeover game icon",
     description:
       "Set of food items for a survival crafting game with painterly style.",
     category: "Gen_Ai",
     thumbnail: "assets/portfolio/thumbnails/makeOverIcon.webp",
-    image: "assets/portfolio/food1.jpg",
+    image: "assets/portfolio/thumbnails/makeOverIcon.webp",
   },
   {
     id: 16,
-    title: "Make over game icon ",
+    title: "Makeover game icon",
     description:
       "Set of food items for a survival crafting game with painterly style.",
     category: "Gen_Ai",
     thumbnail: "assets/portfolio/thumbnails/makeOverGameIcon2.webp",
-    image: "assets/portfolio/food1.jpg",
+    image: "assets/portfolio/thumbnails/makeOverGameIcon2.webp",
   },
   {
     id: 17,
-    title: "Phonexia life stage",
+    title: "Phoenix life stage",
     description:
       "Set of food items for a survival crafting game with painterly style.",
     category: "animals",
     thumbnail: "assets/portfolio/thumbnails/phonex.webp",
-    image: "assets/portfolio/food1.jpg",
+    image: "assets/portfolio/phonex.webp",
   },
+  {
+    id: 18,
+    title: "Pizza Oven",
+    description:
+      "Set of food items for a survival crafting game with painterly style.",
+    category: "meta",
+    thumbnail: "assets/portfolio/thumbnails/pizzaOven.webp",
+    image: "assets/portfolio/pizzaOven.webp",
+  },
+  {
+    id: 19,
+    title: "Water Pond",
+    description:
+      "Set of food items for a survival crafting game with painterly style.",
+    category: "meta",
+    thumbnail: "assets/portfolio/thumbnails/waterPond.webp",
+    image: "assets/portfolio/waterPond.webp",
+  },
+  {
+    id: 20,
+    title: "Finger sandwich & cappuccino",
+    description:
+      "Set of food items for a survival crafting game with painterly style.",
+    category: "food",
+    thumbnail: "assets/portfolio/thumbnails/fingerSandwitch.webp",
+    image: "assets/portfolio/fingerSandwitch.webp",
+  },
+  {
+    id: 21,
+    title: "Koala",
+    description:
+      "Set of food items for a survival crafting game with painterly style.",
+    category: "animals",
+    thumbnail: "assets/portfolio/thumbnails/koala.webp",
+    image: "assets/portfolio/koala.webp",
+  },
+  {
+    id: 22,
+    title: "Frappuccino with cookies",
+    description:
+      "Set of food items for a survival crafting game with painterly style.",
+    category: "food",
+    thumbnail: "assets/portfolio/thumbnails/frapeKuki.webp",
+    image: "assets/portfolio/frapeKuki.webp",
+  },
+  {
+    id: 23,
+    title: "Corn life stages",
+    description:
+      "Set of food items for a survival crafting game with painterly style.",
+    category: "meta",
+    thumbnail: "assets/portfolio/thumbnails/cornLifestage.webp",
+    image: "assets/portfolio/cornLifestage.webp",
+  },
+  {
+    id: 24,
+    title: "Mexican soup",
+    description:
+      "Set of food items for a survival crafting game with painterly style.",
+    category: "food",
+    thumbnail: "assets/portfolio/thumbnails/maxicanSoop.webp",
+    image: "assets/portfolio/maxicanSoop.webp",
+  },
+  {
+    id: 25,
+    title: "Pony Hourse life stages",
+    description:
+      "Set of food items for a survival crafting game with painterly style.",
+    category: "food",
+    thumbnail: "assets/portfolio/thumbnails/poneyHorse.webp",
+    image: "assets/portfolio/poneyHorse.webp",
+  },
+  {
+    id: 26,
+    title: "Game screen-shot",
+    description:
+      "Set of food items for a survival crafting game with painterly style.",
+    category: "food",
+    thumbnail: "assets/portfolio/thumbnails/renovationScreenShot.webp",
+    image: "assets/portfolio/renovationScreenShot.webp",
+  }
 ];
 
 function initPortfolio() {
