@@ -4,7 +4,7 @@ const portfolioItems = [
     id: 1,
     title: "Character",
     description:
-      "A detailed character design for a fantasy RPG game featuring intricate armor and weapon details.",
+      "Original character design featuring dynamic pose and vibrant color palette, showcasing personality through detailed costume elements.",
     category: "characters",
     thumbnail: "assets/portfolio/thumbnails/char1.webp",
     image: "assets/portfolio/char1.webp",
@@ -13,7 +13,7 @@ const portfolioItems = [
     id: 2,
     title: "Loading screen",
     description:
-      "Environment design for a magical forest level with atmospheric lighting and particle effects.",
+      "Atmospheric loading screen design with gradient background and decorative elements creating visual interest while players wait.",
     category: "backgrounds",
     thumbnail: "assets/portfolio/thumbnails/acs.webp",
     image: "assets/portfolio/acs.webp",
@@ -22,7 +22,7 @@ const portfolioItems = [
     id: 3,
     title: "Cat merge-2 icon",
     description:
-      "User interface design for a space exploration game with futuristic elements and glow effects.",
+      "Playful game icon featuring an adorable cat character with appealing colors and shapes designed for high visibility in app stores.",
     category: "icons",
     thumbnail: "assets/portfolio/thumbnails/catIcon.webp",
     image: "assets/portfolio/catIcon.webp",
@@ -31,7 +31,7 @@ const portfolioItems = [
     id: 4,
     title: "Cooking Valley Loading screen",
     description:
-      "Multiple concept explorations for a dragon character with different color variations and poses.",
+      "Warm and inviting loading screen for Cooking Valley game with food-themed visuals that establish the game's culinary atmosphere.",
     category: "backgrounds",
     thumbnail: "assets/portfolio/thumbnails/cookingVeli.webp",
     image: "assets/portfolio/cookingVeli.webp",
@@ -40,7 +40,7 @@ const portfolioItems = [
     id: 5,
     title: "Story board",
     description:
-      "Detailed medieval village environment with atmospheric lighting and detailed architecture.",
+      "Sequential storyboard panels illustrating game narrative flow with clear visual progression and character interactions.",
     category: "backgrounds",
     thumbnail: "assets/portfolio/thumbnails/storyBoard.webp",
     image: "assets/portfolio/storyBoard.webp",
@@ -49,7 +49,7 @@ const portfolioItems = [
     id: 6,
     title: "Cooking restaurant concept",
     description:
-      "Icon set for player abilities and skills with glowing effects and distinctive silhouettes.",
+      "Detailed restaurant environment concept showcasing layout, decorative elements, and cooking stations for an immersive gameplay experience.",
     category: "concepts",
     thumbnail: "assets/portfolio/thumbnails/cookingresturentConcept.webp",
     image: "assets/portfolio/cookingresturentConcept.webp",
@@ -58,7 +58,7 @@ const portfolioItems = [
     id: 7,
     title: "Coconut Tree Concept",
     description:
-      "Character design for a sci-fi game featuring advanced armor and weapon systems.",
+      "Stylized coconut tree design with multiple growth stages, showing attention to detail in texture and environmental asset creation.",
     category: "concepts",
     thumbnail: "assets/portfolio/thumbnails/coconutTreeConcept.webp",
     image: "assets/portfolio/coconutTreeConcept.webp",
@@ -67,7 +67,7 @@ const portfolioItems = [
     id: 8,
     title: "Barrel Concept",
     description:
-      "Collection of mythical creature designs with detailed anatomy and texture work.",
+      "Game-ready barrel asset concept with detailed texture mapping and varied perspectives to ensure consistent appearance in-game.",
     category: "concepts",
     thumbnail: "assets/portfolio/thumbnails/beral.webp",
     image: "assets/portfolio/beral.webp",
@@ -76,8 +76,8 @@ const portfolioItems = [
     id: 9,
     title: "Apple tree lifecycle",
     description:
-      "Set of food items for a survival crafting game with painterly style.",
-    category: "meta", // animal, food, characters, backgrounds, icons, concept, meta
+      "Complete apple tree growth progression from sapling to fruit-bearing tree, illustrating lifecycle mechanics for farming gameplay.",
+    category: "meta",
     thumbnail: "assets/portfolio/thumbnails/appleTreeLifeCycle.webp",
     image: "assets/portfolio/appleTreeLifeCycle.webp",
   },
@@ -85,7 +85,7 @@ const portfolioItems = [
     id: 10,
     title: "Ludo Play Icon",
     description:
-      "Set of food items for a survival crafting game with painterly style.",
+      "Vibrant Ludo game icon with recognizable game elements and bright color scheme designed to attract player attention.",
     category: "icons",
     thumbnail: "assets/portfolio/thumbnails/ludoPlayIcon.webp",
     image: "assets/portfolio/ludoPlayIcon.webp",
@@ -94,17 +94,16 @@ const portfolioItems = [
     id: 11,
     title: "Halloween Merge-3 Icon",
     description:
-      "Set of food items for a survival crafting game with painterly style.",
+      "Spooky-themed match-3 game icon with Halloween elements and bold typography creating a festive yet engaging visual identity.",
     category: "icons",
     thumbnail: "assets/portfolio/thumbnails/hallowenMerge3Icon.webp",
     image: "assets/portfolio/hallowenMerge3Icon.webp",
   },
-
   {
     id: 12,
     title: "Cooking game map part-1",
     description:
-      "Set of food items for a survival crafting game with painterly style.",
+      "First section of an expansive cooking game map featuring various locations and paths for players to explore in their culinary adventure.",
     category: "backgrounds",
     thumbnail: "assets/portfolio/thumbnails/mapPart1.webp",
     image: "assets/portfolio/mapPart1.webp",
@@ -113,7 +112,7 @@ const portfolioItems = [
     id: 13,
     title: "Cooking game map part-2",
     description:
-      "Set of food items for a survival crafting game with painterly style.",
+      "Second section of the cooking game world map with unique landmarks and interconnected paths continuing the game's charming visual narrative.",
     category: "backgrounds",
     thumbnail: "assets/portfolio/thumbnails/mapPart2.webp",
     image: "assets/portfolio/mapPart2.webp",
@@ -122,17 +121,16 @@ const portfolioItems = [
     id: 14,
     title: "Cooking game map part-3",
     description:
-      "Set of food items for a survival crafting game with painterly style.",
+      "Final section of the cooking game map showcasing advanced areas and special locations that complete the game world's progression system.",
     category: "backgrounds",
     thumbnail: "assets/portfolio/thumbnails/mapPart3.webp",
     image: "assets/portfolio/mapPart3.webp",
   },
-
   {
     id: 15,
     title: "Makeover game icon",
     description:
-      "Set of food items for a survival crafting game with painterly style.",
+      "Fashion and beauty makeover game icon featuring stylized character design that communicates the game's transformation gameplay.",
     category: "Gen_Ai",
     thumbnail: "assets/portfolio/thumbnails/makeOverIcon.webp",
     image: "assets/portfolio/thumbnails/makeOverIcon.webp",
@@ -141,7 +139,7 @@ const portfolioItems = [
     id: 16,
     title: "Makeover game icon",
     description:
-      "Set of food items for a survival crafting game with painterly style.",
+      "Alternative design for makeover game icon with different composition and color scheme generated using AI to explore visual options.",
     category: "Gen_Ai",
     thumbnail: "assets/portfolio/thumbnails/makeOverGameIcon2.webp",
     image: "assets/portfolio/thumbnails/makeOverGameIcon2.webp",
@@ -150,7 +148,7 @@ const portfolioItems = [
     id: 17,
     title: "Phoenix life stage",
     description:
-      "Set of food items for a survival crafting game with painterly style.",
+      "Mythical phoenix character illustrated in multiple life stages from egg to majestic adult, showing progression for collection-based gameplay.",
     category: "animals",
     thumbnail: "assets/portfolio/thumbnails/phonex.webp",
     image: "assets/portfolio/phonex.webp",
@@ -159,7 +157,7 @@ const portfolioItems = [
     id: 18,
     title: "Pizza Oven",
     description:
-      "Set of food items for a survival crafting game with painterly style.",
+      "Detailed pizza oven asset designed for cooking simulation gameplay with attention to functional elements and visual appeal.",
     category: "meta",
     thumbnail: "assets/portfolio/thumbnails/pizzaOven.webp",
     image: "assets/portfolio/pizzaOven.webp",
@@ -168,7 +166,7 @@ const portfolioItems = [
     id: 19,
     title: "Water Pond",
     description:
-      "Set of food items for a survival crafting game with painterly style.",
+      "Decorative water pond asset with layered details creating depth and tranquil atmosphere for garden or nature-themed gameplay environments.",
     category: "meta",
     thumbnail: "assets/portfolio/thumbnails/waterPond.webp",
     image: "assets/portfolio/waterPond.webp",
@@ -177,7 +175,7 @@ const portfolioItems = [
     id: 20,
     title: "Finger sandwich & cappuccino",
     description:
-      "Set of food items for a survival crafting game with painterly style.",
+      "Appetizing food illustration featuring finger sandwiches and cappuccino with detailed textures and presentation for cooking gameplay.",
     category: "food",
     thumbnail: "assets/portfolio/thumbnails/fingerSandwitch.webp",
     image: "assets/portfolio/fingerSandwitch.webp",
@@ -186,7 +184,7 @@ const portfolioItems = [
     id: 21,
     title: "Koala",
     description:
-      "Set of food items for a survival crafting game with painterly style.",
+      "Charming koala character design with soft textures and expressive features suitable for casual games or animal collection mechanics.",
     category: "animals",
     thumbnail: "assets/portfolio/thumbnails/koala.webp",
     image: "assets/portfolio/koala.webp",
@@ -195,7 +193,7 @@ const portfolioItems = [
     id: 22,
     title: "Frappuccino with cookies",
     description:
-      "Set of food items for a survival crafting game with painterly style.",
+      "Delectable frappuccino and cookies illustration with rich details in texture and shading for realistic food representation in cooking games.",
     category: "food",
     thumbnail: "assets/portfolio/thumbnails/frapeKuki.webp",
     image: "assets/portfolio/frapeKuki.webp",
@@ -204,7 +202,7 @@ const portfolioItems = [
     id: 23,
     title: "Corn life stages",
     description:
-      "Set of food items for a survival crafting game with painterly style.",
+      "Complete corn growth cycle from seed to harvest designed for farming game mechanics with clear visual progression stages.",
     category: "meta",
     thumbnail: "assets/portfolio/thumbnails/cornLifestage.webp",
     image: "assets/portfolio/cornLifestage.webp",
@@ -213,7 +211,7 @@ const portfolioItems = [
     id: 24,
     title: "Mexican soup",
     description:
-      "Set of food items for a survival crafting game with painterly style.",
+      "Vibrant Mexican soup illustration with authentic ingredients and presentation details for ethnic food recipes in cooking simulation games.",
     category: "food",
     thumbnail: "assets/portfolio/thumbnails/maxicanSoop.webp",
     image: "assets/portfolio/maxicanSoop.webp",
@@ -222,8 +220,8 @@ const portfolioItems = [
     id: 25,
     title: "Pony Hourse life stages",
     description:
-      "Set of food items for a survival crafting game with painterly style.",
-    category: "food",
+      "Pony growth evolution from foal to adult horse, illustrating character progression for animal raising or collection-based gameplay.",
+    category: "animals",
     thumbnail: "assets/portfolio/thumbnails/poneyHorse.webp",
     image: "assets/portfolio/poneyHorse.webp",
   },
@@ -231,11 +229,11 @@ const portfolioItems = [
     id: 26,
     title: "Game screen-shot",
     description:
-      "Set of food items for a survival crafting game with painterly style.",
-    category: "food",
+      "In-game screenshot showcasing the UI layout and visual aesthetics of a home renovation game with interactive elements and progression indicators.",
+    category: "backgrounds",
     thumbnail: "assets/portfolio/thumbnails/renovationScreenShot.webp",
     image: "assets/portfolio/renovationScreenShot.webp",
-  }
+  },
 ];
 
 function initPortfolio() {
