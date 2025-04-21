@@ -483,6 +483,7 @@ section {
 /* Experience Section */
 .experience-section {
   background-color: #222;
+  position: relative;
 }
 
 .timeline {
@@ -1082,7 +1083,42 @@ section {
   }
   
   .timeline-content {
-    width: 70%;
+    width: 45%; /* Keep the width consistent */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+  }
+}
+
+@media (max-width: 1024px) {
+  /* Switch to left-aligned timeline earlier to prevent layout issues */
+  .timeline::before {
+    left: 40px;
+    height: calc(100% - 20px); /* Slightly shorter to avoid overflow */
+  }
+  
+  .timeline-marker {
+    left: 40px;
+  }
+  
+  .timeline-content {
+    width: calc(100% - 90px); /* Adjust width for better appearance */
+    margin-left: 90px !important; /* Ensure all items align left */
+    padding: 25px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+  }
+  
+  .timeline-item:nth-child(odd) .timeline-content {
+    margin-left: 90px; /* Override the auto margin for odd items */
+  }
+  
+  /* Add connecting lines from marker to content */
+  .timeline-content::before {
+    content: '';
+    position: absolute;
+    top: 10px; /* Align with marker */
+    left: -30px; /* Connect to marker */
+    width: 30px;
+    height: 2px;
+    background-color: var(--accent-color);
   }
 }
 
@@ -1124,35 +1160,43 @@ section {
     z-index: 1001; /* Higher than nav-links to stay on top */
   }
   
-  .timeline::before {
-    left: 40px;
-  }
-  
-  .timeline-marker {
-    left: 40px;
-  }
-  
-  .timeline-content {
-    width: calc(100% - 80px);
-    margin-left: 80px !important;
-  }
-  
   .portfolio-grid {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   }
+  
+  /* Keep timeline styles consistent with 1024px breakpoint but adjust spacing */
+  .timeline-content {
+    padding: 20px;
+  }
 }
 
-@media (max-width: 480px) {
-  .hero-text h1 {
-    font-size: 2.5rem;
+@media (max-width: 576px) {
+  .timeline-content {
+    width: calc(100% - 60px);
+    margin-left: 60px !important;
+    padding: 20px;
   }
   
-  .section-header h2 {
-    font-size: 2.2rem;
+  .timeline::before {
+    left: 30px;
   }
   
-  .portfolio-filter {
-    flex-direction: column;
-    align-items: center;
+  .timeline-marker {
+    width: 16px;
+    height: 16px;
+    left: 30px;
+  }
+  
+  .timeline-content::before {
+    left: -20px; /* Adjust connector line for smaller screens */
+    width: 20px;
+  }
+  
+  .timeline-content h3 {
+    font-size: 1.3rem;
+  }
+  
+  .timeline-content h4 {
+    font-size: 1rem;
   }
 }
