@@ -11,74 +11,148 @@ const portfolioItems = [
   },
   {
     id: 2,
-    title: "Mystical Forest Background",
+    title: "Loading screen",
     description:
       "Environment design for a magical forest level with atmospheric lighting and particle effects.",
     category: "backgrounds",
-    thumbnail: "assets/portfolio/thumbnails/background1.jpg",
-    image: "assets/portfolio/background1.jpg",
+    thumbnail: "assets/portfolio/thumbnails/acs.webp",
+    image: "assets/portfolio/acs.webp",
   },
   {
     id: 3,
-    title: "Game UI Dashboard",
+    title: "Cat merge2 icon",
     description:
       "User interface design for a space exploration game with futuristic elements and glow effects.",
-    category: "ui",
-    thumbnail: "assets/portfolio/thumbnails/ui1.jpg",
-    image: "assets/portfolio/ui1.jpg",
+    category: "icons",
+    thumbnail: "assets/portfolio/thumbnails/catIcon.webp",
+    image: "assets/portfolio/Gen AI1.jpg",
   },
   {
     id: 4,
-    title: "Dragon Character Concept",
+    title: "Cooking Veli Loading screen",
     description:
       "Multiple concept explorations for a dragon character with different color variations and poses.",
-    category: "concepts",
-    thumbnail: "assets/portfolio/thumbnails/concept1.jpg",
+    category: "backgrounds",
+    thumbnail: "assets/portfolio/thumbnails/cookingVeli.webp",
     image: "assets/portfolio/concept1.jpg",
   },
   {
     id: 5,
-    title: "Medieval Village Background",
+    title: "Story board",
     description:
       "Detailed medieval village environment with atmospheric lighting and detailed architecture.",
     category: "backgrounds",
-    thumbnail: "assets/portfolio/thumbnails/background2.jpg",
+    thumbnail: "assets/portfolio/thumbnails/storyBoard.webp",
     image: "assets/portfolio/background2.jpg",
   },
   {
     id: 6,
-    title: "Skill Icons Set",
+    title: "Cooking restaurant concept",
     description:
       "Icon set for player abilities and skills with glowing effects and distinctive silhouettes.",
-    category: "icons",
-    thumbnail: "assets/portfolio/thumbnails/icons1.jpg",
+    category: "concepts",
+    thumbnail: "assets/portfolio/thumbnails/cookingresturentConcept.webp",
     image: "assets/portfolio/icons1.jpg",
   },
   {
     id: 7,
-    title: "Futuristic Warrior",
+    title: "coconut Tree Concept",
     description:
       "Character design for a sci-fi game featuring advanced armor and weapon systems.",
-    category: "characters",
-    thumbnail: "assets/portfolio/thumbnails/character2.jpg",
+    category: "concepts",
+    thumbnail: "assets/portfolio/thumbnails/coconutTreeConcept.webp",
     image: "assets/portfolio/character2.jpg",
   },
   {
     id: 8,
-    title: "Fantasy Creatures",
+    title: "barrel Concept",
     description:
       "Collection of mythical creature designs with detailed anatomy and texture work.",
-    category: "animals",
-    thumbnail: "assets/portfolio/thumbnails/animal1.jpg",
+    category: "concepts",
+    thumbnail: "assets/portfolio/thumbnails/beral.webp",
     image: "assets/portfolio/animal1.jpg",
   },
   {
     id: 9,
-    title: "Game Food Items",
+    title: "Apple tree lifecycle",
     description:
       "Set of food items for a survival crafting game with painterly style.",
-    category: "food",
-    thumbnail: "assets/portfolio/thumbnails/food1.jpg",
+    category: "meta", // animal, food, characters, backgrounds, icons, concept, meta
+    thumbnail: "assets/portfolio/thumbnails/appleTreeLifeCycle.webp",
+    image: "assets/portfolio/food1.jpg",
+  },
+  {
+    id: 10,
+    title: "Ludo Play Icon",
+    description:
+      "Set of food items for a survival crafting game with painterly style.",
+    category: "icons",
+    thumbnail: "assets/portfolio/thumbnails/ludoPlayIcon.webp",
+    image: "assets/portfolio/food1.jpg",
+  },
+  {
+    id: 11,
+    title: "Halloween Merge-3 Icon",
+    description:
+      "Set of food items for a survival crafting game with painterly style.",
+    category: "icons",
+    thumbnail: "assets/portfolio/thumbnails/hallowenMerge3Icon.webp",
+    image: "assets/portfolio/food1.jpg",
+  },
+
+  {
+    id: 12,
+    title: "Cooking game map part 1",
+    description:
+      "Set of food items for a survival crafting game with painterly style.",
+    category: "backgrounds",
+    thumbnail: "assets/portfolio/thumbnails/mapPart1.webp",
+    image: "assets/portfolio/food1.jpg",
+  },
+  {
+    id: 13,
+    title: "Cooking game map part 2",
+    description:
+      "Set of food items for a survival crafting game with painterly style.",
+    category: "backgrounds",
+    thumbnail: "assets/portfolio/thumbnails/mapPart2.webp",
+    image: "assets/portfolio/food1.jpg",
+  },
+  {
+    id: 14,
+    title: "Cooking game map part 3",
+    description:
+      "Set of food items for a survival crafting game with painterly style.",
+    category: "backgrounds",
+    thumbnail: "assets/portfolio/thumbnails/mapPart3.webp",
+    image: "assets/portfolio/food1.jpg",
+  },
+
+  {
+    id: 15,
+    title: "Make over game icon ",
+    description:
+      "Set of food items for a survival crafting game with painterly style.",
+    category: "Gen_Ai",
+    thumbnail: "assets/portfolio/thumbnails/makeOverIcon.webp",
+    image: "assets/portfolio/food1.jpg",
+  },
+  {
+    id: 16,
+    title: "Make over game icon ",
+    description:
+      "Set of food items for a survival crafting game with painterly style.",
+    category: "Gen_Ai",
+    thumbnail: "assets/portfolio/thumbnails/makeOverGameIcon2.webp",
+    image: "assets/portfolio/food1.jpg",
+  },
+  {
+    id: 17,
+    title: "Phonexia life stage",
+    description:
+      "Set of food items for a survival crafting game with painterly style.",
+    category: "animals",
+    thumbnail: "assets/portfolio/thumbnails/phonex.webp",
     image: "assets/portfolio/food1.jpg",
   },
 ];
