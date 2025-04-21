@@ -36,21 +36,19 @@ body {
   pointer-events: none;
   z-index: 9999;
   border-radius: 50%;
-  transform: translate(-50%, -50%);
+  will-change: transform; /* Performance optimization */
 }
 
 .cursor-dot {
   width: 8px;
   height: 8px;
   background-color: var(--accent-color);
-  transition: transform 0.2s ease;
 }
 
 .cursor-outline {
   width: 40px;
   height: 40px;
   border: 2px solid var(--secondary-color);
-  transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease, border 0.3s ease;
 }
 
 /* Navigation */
@@ -120,7 +118,7 @@ body {
 
 .menu-toggle {
   display: none;
-  cursor: pointer;
+  /* cursor: none; */
 }
 
 .menu-toggle .bar {
@@ -583,7 +581,7 @@ section {
   color: var(--light-color);
   font-size: 0.9rem;
   font-weight: 500;
-  cursor: pointer;
+  cursor: none;
   transition: var(--transition);
   position: relative;
   overflow: hidden;
@@ -632,7 +630,7 @@ section {
   position: relative;
   border-radius: 10px;
   overflow: hidden;
-  cursor: pointer;
+  /* cursor: none; */
   transform-style: preserve-3d;
   transform: perspective(1000px);
   transition: transform 0.3s ease;
@@ -731,7 +729,7 @@ section {
   opacity: 0;
   visibility: hidden;
   transition: var(--transition);
-  cursor: pointer; /* Indicate it's clickable */
+  /* cursor: none; Indicate it's clickable */
 }
 
 .modal-content {
@@ -748,7 +746,7 @@ section {
   transition: var(--transition);
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  cursor: default; /* Reset cursor for modal content */
+  /* cursor: default; Reset cursor for modal content */
   z-index: 2001; /* Ensure content is above the modal background */
 }
 
@@ -774,7 +772,7 @@ section {
   justify-content: center;
   font-size: 1.5rem;
   color: white;
-  cursor: pointer;
+  /* cursor: none; */
   z-index: 1;
   transition: all 0.3s ease;
 }
@@ -863,7 +861,7 @@ section {
   border-radius: 30px;
   color: var(--light-color);
   font-size: 1rem;
-  cursor: pointer;
+  /* cursor: none; */
   padding: 12px 25px;
   transition: var(--transition);
   display: flex;
@@ -1032,7 +1030,7 @@ section {
   border: none;
   padding: 15px 40px;
   border-radius: 40px;
-  cursor: pointer;
+  cursor: none;
   overflow: hidden;
   transition: var(--transition);
 }

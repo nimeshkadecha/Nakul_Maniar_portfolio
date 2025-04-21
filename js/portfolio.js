@@ -1,77 +1,95 @@
 // Portfolio data structure
 const portfolioItems = [
-    {
-        id: 1,
-        title: "Fantasy Character Design",
-        description: "A detailed character design for a fantasy RPG game featuring intricate armor and weapon details.",
-        category: "characters",
-        image: "assets/portfolio/character1.jpg",
-        date: "June 2023"
-    },
-    {
-        id: 2,
-        title: "Mystical Forest Background",
-        description: "Environment design for a magical forest level with atmospheric lighting and particle effects.",
-        category: "backgrounds",
-        image: "assets/portfolio/background1.jpg",
-        date: "May 2023"
-    },
-    {
-        id: 3,
-        title: "Game UI Dashboard",
-        description: "User interface design for a space exploration game with futuristic elements and glow effects.",
-        category: "ui",
-        image: "assets/portfolio/ui1.jpg",
-        date: "April 2023"
-    },
-    {
-        id: 4,
-        title: "Dragon Character Concept",
-        description: "Multiple concept explorations for a dragon character with different color variations and poses.",
-        category: "concepts",
-        image: "assets/portfolio/concept1.jpg",
-        date: "March 2023"
-    },
-    {
-        id: 5,
-        title: "Medieval Village Background",
-        description: "Detailed medieval village environment with atmospheric lighting and detailed architecture.",
-        category: "backgrounds",
-        image: "assets/portfolio/background2.jpg",
-        date: "February 2023"
-    },
-    {
-        id: 6,
-        title: "Skill Icons Set",
-        description: "Icon set for player abilities and skills with glowing effects and distinctive silhouettes.",
-        category: "icons",
-        image: "assets/portfolio/icons1.jpg",
-        date: "January 2023"
-    },
-    {
-        id: 7,
-        title: "Futuristic Warrior",
-        description: "Character design for a sci-fi game featuring advanced armor and weapon systems.",
-        category: "characters",
-        image: "assets/portfolio/character2.jpg",
-        date: "December 2022"
-    },
-    {
-        id: 8,
-        title: "Fantasy Creatures",
-        description: "Collection of mythical creature designs with detailed anatomy and texture work.",
-        category: "animals",
-        image: "assets/portfolio/animal1.jpg",
-        date: "November 2022"
-    },
-    {
-        id: 9,
-        title: "Game Food Items",
-        description: "Set of food items for a survival crafting game with painterly style.",
-        category: "food",
-        image: "assets/portfolio/food1.jpg",
-        date: "October 2022"
-    }
+  {
+    id: 1,
+    title: "Fantasy Character Design",
+    description:
+      "A detailed character design for a fantasy RPG game featuring intricate armor and weapon details.",
+    category: "characters",
+    thumbnail: "assets/portfolio/thumbnails/character1.jpg",
+    image: "assets/portfolio/character1.jpg",
+    date: "June 2023",
+  },
+  {
+    id: 2,
+    title: "Mystical Forest Background",
+    description:
+      "Environment design for a magical forest level with atmospheric lighting and particle effects.",
+    category: "backgrounds",
+    thumbnail: "assets/portfolio/thumbnails/background1.jpg",
+    image: "assets/portfolio/background1.jpg",
+    date: "May 2023",
+  },
+  {
+    id: 3,
+    title: "Game UI Dashboard",
+    description:
+      "User interface design for a space exploration game with futuristic elements and glow effects.",
+    category: "ui",
+    thumbnail: "assets/portfolio/thumbnails/ui1.jpg",
+    image: "assets/portfolio/ui1.jpg",
+    date: "April 2023",
+  },
+  {
+    id: 4,
+    title: "Dragon Character Concept",
+    description:
+      "Multiple concept explorations for a dragon character with different color variations and poses.",
+    category: "concepts",
+    thumbnail: "assets/portfolio/thumbnails/concept1.jpg",
+    image: "assets/portfolio/concept1.jpg",
+    date: "March 2023",
+  },
+  {
+    id: 5,
+    title: "Medieval Village Background",
+    description:
+      "Detailed medieval village environment with atmospheric lighting and detailed architecture.",
+    category: "backgrounds",
+    thumbnail: "assets/portfolio/thumbnails/background2.jpg",
+    image: "assets/portfolio/background2.jpg",
+    date: "February 2023",
+  },
+  {
+    id: 6,
+    title: "Skill Icons Set",
+    description:
+      "Icon set for player abilities and skills with glowing effects and distinctive silhouettes.",
+    category: "icons",
+    thumbnail: "assets/portfolio/thumbnails/icons1.jpg",
+    image: "assets/portfolio/icons1.jpg",
+    date: "January 2023",
+  },
+  {
+    id: 7,
+    title: "Futuristic Warrior",
+    description:
+      "Character design for a sci-fi game featuring advanced armor and weapon systems.",
+    category: "characters",
+    thumbnail: "assets/portfolio/thumbnails/character2.jpg",
+    image: "assets/portfolio/character2.jpg",
+    date: "December 2022",
+  },
+  {
+    id: 8,
+    title: "Fantasy Creatures",
+    description:
+      "Collection of mythical creature designs with detailed anatomy and texture work.",
+    category: "animals",
+    thumbnail: "assets/portfolio/thumbnails/animal1.jpg",
+    image: "assets/portfolio/animal1.jpg",
+    date: "November 2022",
+  },
+  {
+    id: 9,
+    title: "Game Food Items",
+    description:
+      "Set of food items for a survival crafting game with painterly style.",
+    category: "food",
+    thumbnail: "assets/portfolio/thumbnails/food1.jpg",
+    image: "assets/portfolio/food1.jpg",
+    date: "October 2022",
+  },
 ];
 
 function initPortfolio() {
@@ -80,6 +98,7 @@ function initPortfolio() {
   const modal = document.querySelector(".portfolio-modal");
   let currentCategory = "all";
   let currentItemIndex = 0;
+  let preloadedImages = new Map(); // For caching preloaded images
 
   // Create portfolio items
   function renderPortfolioItems(category) {
@@ -105,7 +124,7 @@ function initPortfolio() {
       portfolioItem.dataset.id = item.id;
 
       portfolioItem.innerHTML = `
-                <img src="${item.image}" alt="${item.title}">
+                <img src="${item.thumbnail}" alt="${item.title}" loading="lazy">
                 <div class="portfolio-item-info">
                     <h3>${item.title}</h3>
                     <p>${item.category}</p>
@@ -129,6 +148,21 @@ function initPortfolio() {
 
     // Add animation to items
     animatePortfolioItems();
+
+    // Start preloading the first few full-size images
+    preloadNextImages(filteredItems, 0, 3);
+  }
+
+  // Preload images for better performance when navigating
+  function preloadNextImages(items, startIdx, count) {
+    for (let i = 0; i < count && i + startIdx < items.length; i++) {
+      const item = items[i + startIdx];
+      if (!preloadedImages.has(item.id)) {
+        const img = new Image();
+        img.src = item.image;
+        preloadedImages.set(item.id, img);
+      }
+    }
   }
 
   // 3D hover effect
@@ -404,7 +438,7 @@ function initPortfolio() {
     });
   }
 
-  // Enhanced modal functionality
+  // Enhanced modal functionality with image optimization
   function openModal(itemId) {
     if (!modal) return;
 
@@ -421,7 +455,24 @@ function initPortfolio() {
     const modalCategory = modal.querySelector(".modal-category");
     const modalDate = modal.querySelector(".modal-date");
 
-    if (modalImage) modalImage.src = item.image;
+    // Show loading state
+    if (modalImage) {
+      modalImage.classList.add("loading");
+      modalImage.src = item.thumbnail; // Show thumbnail first
+
+      // Then load the full image
+      const fullImg = preloadedImages.get(item.id) || new Image();
+      if (!preloadedImages.has(item.id)) {
+        fullImg.src = item.image;
+        preloadedImages.set(item.id, fullImg);
+      }
+
+      fullImg.onload = function () {
+        modalImage.src = item.image;
+        modalImage.classList.remove("loading");
+      };
+    }
+
     if (modalTitle) modalTitle.textContent = item.title;
     if (modalDesc) modalDesc.textContent = item.description;
     if (modalCategory) modalCategory.textContent = `Category: ${item.category}`;
@@ -430,6 +481,29 @@ function initPortfolio() {
     // Show modal with animation
     modal.classList.add("active");
     document.body.style.overflow = "hidden";
+
+    // Preload next and previous images for smoother navigation
+    preloadAdjacentImages(currentItemIndex);
+  }
+
+  // Preload adjacent images for smoother modal navigation
+  function preloadAdjacentImages(index) {
+    let nextIndex = (index + 1) % portfolioItems.length;
+    let prevIndex = index - 1 < 0 ? portfolioItems.length - 1 : index - 1;
+
+    // Preload next image
+    if (!preloadedImages.has(portfolioItems[nextIndex].id)) {
+      const nextImg = new Image();
+      nextImg.src = portfolioItems[nextIndex].image;
+      preloadedImages.set(portfolioItems[nextIndex].id, nextImg);
+    }
+
+    // Preload previous image
+    if (!preloadedImages.has(portfolioItems[prevIndex].id)) {
+      const prevImg = new Image();
+      prevImg.src = portfolioItems[prevIndex].image;
+      preloadedImages.set(portfolioItems[prevIndex].id, prevImg);
+    }
   }
 
   // Close modal function
@@ -457,7 +531,7 @@ function initPortfolio() {
     });
   }
 
-  // Modal navigation with fixed functionality
+  // Modal navigation with fixed functionality and optimized image loading
   function navigateModal(direction) {
     let filteredItems =
       currentCategory === "all"
@@ -489,13 +563,36 @@ function initPortfolio() {
     const modalDate = modal.querySelector(".modal-date");
 
     // Fade out current content
-    gsap.to([modalImage, modalTitle, modalDesc, modalCategory, modalDate], {
+    gsap.to([modalTitle, modalDesc, modalCategory, modalDate], {
       opacity: 0,
       y: direction === "next" ? -20 : 20,
       duration: 0.3,
       onComplete: () => {
         // Update content
-        if (modalImage) modalImage.src = newItem.image;
+        if (modalImage) {
+          modalImage.classList.add("loading");
+          // Use thumbnail first for fast transition
+          modalImage.src = newItem.thumbnail;
+
+          // Then load full image if needed
+          if (preloadedImages.has(newItem.id)) {
+            // We already have the preloaded image
+            setTimeout(() => {
+              modalImage.src = newItem.image;
+              modalImage.classList.remove("loading");
+            }, 50); // Small delay for smoother transition
+          } else {
+            // Need to load the full image
+            const fullImg = new Image();
+            fullImg.onload = function () {
+              modalImage.src = newItem.image;
+              modalImage.classList.remove("loading");
+              preloadedImages.set(newItem.id, fullImg);
+            };
+            fullImg.src = newItem.image;
+          }
+        }
+
         if (modalTitle) modalTitle.textContent = newItem.title;
         if (modalDesc) modalDesc.textContent = newItem.description;
         if (modalCategory)
@@ -503,11 +600,14 @@ function initPortfolio() {
         if (modalDate) modalDate.textContent = `Created: ${newItem.date}`;
 
         // Fade in new content
-        gsap.to([modalImage, modalTitle, modalDesc, modalCategory, modalDate], {
+        gsap.to([modalTitle, modalDesc, modalCategory, modalDate], {
           opacity: 1,
           y: 0,
           duration: 0.3,
         });
+
+        // Preload the next image in the navigation sequence for smoother experience
+        preloadAdjacentImages(currentItemIndex);
       },
     });
   }
@@ -553,4 +653,28 @@ function initPortfolio() {
 
   // Initialize portfolio with all items
   renderPortfolioItems("all");
+
+  // Add event listener for window resize to optimize particle effect
+  window.addEventListener(
+    "resize",
+    debounce(() => {
+      const canvas = document.getElementById("portfolio-particles");
+      if (canvas) {
+        // Resize canvas and adjust particles
+        canvas.width = portfolioGrid.offsetWidth;
+        canvas.height = portfolioGrid.offsetHeight;
+      }
+    }, 250)
+  ); // Debounce to avoid performance hit
+
+  // Debounce helper function
+  function debounce(func, wait) {
+    let timeout;
+    return function () {
+      const context = this;
+      const args = arguments;
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(context, args), wait);
+    };
+  }
 }

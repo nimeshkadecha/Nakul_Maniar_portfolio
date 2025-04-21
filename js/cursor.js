@@ -31,19 +31,36 @@ function toggleCursorVisibility() {
   }
 }
 
-function toggleCursorSize() {
+// Updated function to modify scale without affecting position
+function updateCursorScale() {
   if (cursorEnlarged) {
-    cursorDot.style.transform = `translate(-50%, -50%) scale(2.5)`;
-    cursorOutline.style.transform = `translate(-50%, -50%) scale(0.5)`;
+    gsap.to(cursorDot, { 
+      scale: 2.5, 
+      duration: 0.2,
+      ease: "power2.out"
+    });
+    gsap.to(cursorOutline, { 
+      scale: 0.5, 
+      duration: 0.2,
+      ease: "power2.out"
+    });
   } else {
-    cursorDot.style.transform = `translate(-50%, -50%) scale(1)`;
-    cursorOutline.style.transform = `translate(-50%, -50%) scale(1)`;
+    gsap.to(cursorDot, { 
+      scale: 1, 
+      duration: 0.2,
+      ease: "power2.out"
+    });
+    gsap.to(cursorOutline, { 
+      scale: 1, 
+      duration: 0.2,
+      ease: "power2.out"
+    });
   }
 }
 
 function mouseOverEvent() {
   cursorEnlarged = true;
-  toggleCursorSize();
+  updateCursorScale();
 
   // Store the current state
   cursorState.size = "enlarged";
@@ -51,7 +68,7 @@ function mouseOverEvent() {
 
 function mouseOutEvent() {
   cursorEnlarged = false;
-  toggleCursorSize();
+  updateCursorScale();
 
   // Reset to normal state
   cursorState.size = "normal";
@@ -76,6 +93,7 @@ function mouseLeaveEvent() {
   toggleCursorVisibility();
 }
 
+// Updated function to properly position the cursor dot
 function mouseMoveEvent(e) {
   cursorVisible = true;
   toggleCursorVisibility();
@@ -84,20 +102,30 @@ function mouseMoveEvent(e) {
   endX = e.clientX;
   endY = e.clientY;
 
-  cursorDot.style.top = endY + "px";
-  cursorDot.style.left = endX + "px";
+  // Position the dot immediately at cursor position
+  gsap.set(cursorDot, {
+    x: endX,
+    y: endY,
+    xPercent: -50,
+    yPercent: -50
+  });
 }
 
 function mouseDownEvent() {
   isClicking = true;
 
   // Shrink the outline on click
-  cursorDot.style.transform = `translate(-50%, -50%) scale(2.8)`;
-  cursorOutline.style.transform = `translate(-50%, -50%) scale(0.4)`;
+  gsap.to(cursorDot, { 
+    scale: 2.8, 
+    duration: 0.2
+  });
+  gsap.to(cursorOutline, { 
+    scale: 0.4, 
+    duration: 0.2
+  });
 
   // Store previous state to restore after click
-  cursorState.previousTransform = cursorOutline.style.transform;
-  cursorState.previousDotTransform = cursorDot.style.transform;
+  cursorState.previousScale = cursorOutline._gsap ? cursorOutline._gsap.scale : 1;
 }
 
 function mouseUpEvent() {
@@ -105,11 +133,23 @@ function mouseUpEvent() {
 
   // Restore previous state
   if (cursorState.size === "enlarged") {
-    cursorDot.style.transform = `translate(-50%, -50%) scale(2.5)`;
-    cursorOutline.style.transform = `translate(-50%, -50%) scale(0.5)`;
+    gsap.to(cursorDot, { 
+      scale: 2.5, 
+      duration: 0.2
+    });
+    gsap.to(cursorOutline, { 
+      scale: 0.5, 
+      duration: 0.2
+    });
   } else {
-    cursorDot.style.transform = `translate(-50%, -50%) scale(1)`;
-    cursorOutline.style.transform = `translate(-50%, -50%) scale(1)`;
+    gsap.to(cursorDot, { 
+      scale: 1, 
+      duration: 0.2
+    });
+    gsap.to(cursorOutline, { 
+      scale: 1, 
+      duration: 0.2
+    });
   }
 }
 
@@ -128,8 +168,14 @@ function scrollEvent() {
 
     // Restore previous state if not hovering or clicking
     if (cursorState.size !== "enlarged" && !isClicking) {
-      cursorDot.style.transform = `translate(-50%, -50%) scale(1)`;
-      cursorOutline.style.transform = `translate(-50%, -50%) scale(1)`;
+      gsap.to(cursorDot, { 
+        scale: 1, 
+        duration: 0.2
+      });
+      gsap.to(cursorOutline, { 
+        scale: 1, 
+        duration: 0.2
+      });
 
       cursorDot.style.backgroundColor = "";
       cursorOutline.style.borderColor = "";
@@ -139,15 +185,19 @@ function scrollEvent() {
   }, 200);
 }
 
-// Cursor following animation with lag effect
+// Cursor following animation with lag effect - completely revised
 function animateCursor() {
   // Calculate distance between current cursor position and target position
   cursorX += (endX - cursorX) / delay;
   cursorY += (endY - cursorY) / delay;
 
-  // Apply the position to the outline (with lag)
-  cursorOutline.style.top = cursorY + "px";
-  cursorOutline.style.left = cursorX + "px";
+  // Apply the position to the outline with lag, but maintain transforms
+  gsap.set(cursorOutline, {
+    x: cursorX,
+    y: cursorY,
+    xPercent: -50,
+    yPercent: -50
+  });
 
   requestAnimationFrame(animateCursor);
 }
@@ -156,6 +206,14 @@ function animateCursor() {
 document.addEventListener("DOMContentLoaded", function () {
   // Check if cursor elements exist
   if (!cursorDot || !cursorOutline) return;
+
+  // Reset any transforms from CSS to start with clean slate
+  gsap.set([cursorDot, cursorOutline], {
+    xPercent: -50,
+    yPercent: -50,
+    x: window.innerWidth / 2,
+    y: window.innerHeight / 2
+  });
 
   // Event listeners for cursor behavior
   document.addEventListener("mousemove", mouseMoveEvent);
@@ -210,7 +268,7 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(() => {
       if (!isScrolling && !isClicking) {
         cursorEnlarged = false;
-        toggleCursorSize();
+        updateCursorScale();
         cursorDot.style.backgroundColor = "";
         cursorOutline.style.borderColor = "";
         cursorOutline.style.width = "40px";
@@ -264,8 +322,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       btn.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
 
-      cursorDot.style.transform = `translate(-50%, -50%) scale(3)`;
-      cursorDot.style.backgroundColor = "#00b894";
+      // Fix the cursor scaling to ensure proper alignment
+      gsap.to(cursorDot, {
+        scale: 3,
+        backgroundColor: "#00b894",
+        duration: 0.2
+      });
 
       cursorState.color = "#00b894";
     });
@@ -274,8 +336,11 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.style.transform = "translate(0, 0)";
 
       if (!isScrolling && !isClicking) {
-        cursorDot.style.transform = "translate(-50%, -50%) scale(1)";
-        cursorDot.style.backgroundColor = "";
+        gsap.to(cursorDot, {
+          scale: 1,
+          backgroundColor: "",
+          duration: 0.2
+        });
       }
     });
   });
