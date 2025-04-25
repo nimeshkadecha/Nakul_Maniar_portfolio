@@ -2,7 +2,7 @@
 const portfolioItems = [
   {
     id: 1,
-    title: "Character",
+    title: "Character-1",
     description:
       "Original character design featuring dynamic pose and vibrant color palette, showcasing personality through detailed costume elements.",
     category: "characters",
@@ -46,7 +46,7 @@ const portfolioItems = [
     image: "assets/portfolio/storyBoard.webp",
   },
   {
-    id: 6,
+    id: 27,
     title: "Cooking restaurant concept",
     description:
       "Detailed restaurant environment concept showcasing layout, decorative elements, and cooking stations for an immersive gameplay experience.",
@@ -55,7 +55,7 @@ const portfolioItems = [
     image: "assets/portfolio/cookingresturentConcept.webp",
   },
   {
-    id: 7,
+    id: 28,
     title: "Coconut Tree Concept",
     description:
       "Stylized coconut tree design with multiple growth stages, showing attention to detail in texture and environmental asset creation.",
@@ -64,7 +64,7 @@ const portfolioItems = [
     image: "assets/portfolio/coconutTreeConcept.webp",
   },
   {
-    id: 8,
+    id: 29,
     title: "Barrel Concept",
     description:
       "Game-ready barrel asset concept with detailed texture mapping and varied perspectives to ensure consistent appearance in-game.",
@@ -73,7 +73,7 @@ const portfolioItems = [
     image: "assets/portfolio/beral.webp",
   },
   {
-    id: 9,
+    id: 30,
     title: "Apple tree lifecycle",
     description:
       "Stylized apple tree lifecycle illustration showing vibrant seasonal transitions from bloom to bare.",
@@ -82,7 +82,7 @@ const portfolioItems = [
     image: "assets/portfolio/appleTreeLifeCycle.webp",
   },
   {
-    id: 10,
+    id: 31,
     title: "Ludo Play Icon",
     description:
       "Vibrant Ludo game icon with recognizable game elements and bright color scheme designed to attract player attention.",
@@ -91,7 +91,7 @@ const portfolioItems = [
     image: "assets/portfolio/ludoPlayIcon.webp",
   },
   {
-    id: 11,
+    id: 32,
     title: "Halloween Merge-3 Icon",
     description:
       "Halloween-themed game icon featuring a mischievous jack-o'-lantern with a top hat, set against a moonlit, eerie backdrop.",
@@ -234,7 +234,80 @@ const portfolioItems = [
     thumbnail: "assets/portfolio/thumbnails/renovationScreenShot.webp",
     image: "assets/portfolio/renovationScreenShot.webp",
   },
+
+  {
+    id: 6,
+    title: "Character 1",
+    description:
+      "A cinematic character portrait glowing with mystical blue and purple hues, evoking a fantasy or sci-fi vibe.",
+    category: "characters",
+    thumbnail: "assets/portfolio/thumbnails/character1.webp",
+    image: "assets/portfolio/character1.webp",
+  },
+
+  {
+    id: 7,
+    title: "Character 2",
+    description:
+      "A minimalistic and emotional image of a character in solitude, with deep shadows and a reflective ambiance.",
+    category: "characters",
+    thumbnail: "assets/portfolio/thumbnails/character2.webp",
+    image: "assets/portfolio/character2.webp",
+  },
+
+  {
+    id: 8,
+    title: "Character 3",
+    description:
+      "A detailed digital illustration of a regal warrior in an intense stance, framed by fiery tones and powerful energy.",
+    category: "characters",
+    thumbnail: "assets/portfolio/thumbnails/character3.webp",
+    image: "assets/portfolio/character3.webp",
+  },
+
+  {
+    id: 9,
+    title: "Birds scapes",
+    description:
+      "A cheerful gathering of colorful cartoon birds in a vibrant forest, with a waterfall in the background and joyful expressions all around.",
+    category: "Gen_Ai",
+    thumbnail: "assets/portfolio/thumbnails/birdsScapes.webp",
+    image: "assets/portfolio/birdsScapes.webp",
+  },
+
+  {
+    id: 10,
+    title: "Renovation screenshot-2",
+    description:
+      "A vibrant before-and-after transformation of an old rusty car into a shiny red convertible in a game-like visual.",
+    category: "Gen_Ai",
+    thumbnail: "assets/portfolio/thumbnails/renovationScreenShot2.webp",
+    image: "assets/portfolio/renovationScreenShot2.webp",
+  },
+
+  {
+    id: 33,
+    title: "Mistry loading screen",
+    description:
+      "A vibrant poster with stylized text, featuring bold colors and a dramatic atmosphere, possibly for an event or creative announcement.",
+    category: "Gen_Ai",
+    thumbnail: "assets/portfolio/thumbnails/mistryLoadingScreen.webp",
+    image: "assets/portfolio/mistryLoadingScreen.webp",
+  },
+
+  {
+    id: 11,
+    title: "Jungel background",
+    description:
+      "A vibrant before-and-after transformation of an old rusty car into a shiny red convertible in a game-like visual.",
+    category: "Gen_Ai",
+    thumbnail: "assets/portfolio/thumbnails/jungelBackground.webp",
+    image: "assets/portfolio/jungelBackground.webp",
+  },
 ];
+
+// Sort the portfolioItems array by id
+portfolioItems.sort((a, b) => a.id - b.id);
 
 function initPortfolio() {
   const portfolioGrid = document.querySelector(".portfolio-grid");
