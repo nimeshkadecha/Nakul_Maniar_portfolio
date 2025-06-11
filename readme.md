@@ -220,6 +220,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Made with ❤️ by Nakul Maniar & Nimesh Kadecha**
 
-[🌐 Live Demo](https://your-portfolio-url.com) • [📧 Contact](mailto:iamnakulmaniar@gmail.com) • [💼 LinkedIn](https://www.linkedin.com/in/nakul-maniar-5952201ab)
+[🌐 Live Demo](https://nimeshkadecha.github.io/Nakul_Maniar_portfolio/) • [📧 Contact](mailto:iamnakulmaniar@gmail.com) • [💼 LinkedIn](https://www.linkedin.com/in/nakul-maniar-5952201ab)
 
 </div>
