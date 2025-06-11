@@ -1207,3 +1207,24 @@ section {
     font-size: 1rem;
   }
 }
+
+#CreditNims:link {
+  color: var(--primary-color);
+  text-decoration: none;
+  
+}
+
+/* visited link */
+#CreditNims:visited {
+  color: var(--accent-color);
+}
+
+/* mouse over link */
+#CreditNims:hover {
+  color: var(--secondary-color);
+}
+
+/* selected link */
+#CreditNims:active {
+  color: var(--accent-color);
+}
