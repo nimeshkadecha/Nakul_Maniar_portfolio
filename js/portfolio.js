@@ -304,6 +304,16 @@ const portfolioItems = [
     thumbnail: "assets/portfolio/thumbnails/jungelBackground.webp",
     image: "assets/portfolio/jungelBackground.webp",
   },
+  {
+    id: 0,
+    title: "The Red Bloom",
+    description:
+      "AI Generated video for social awarness",
+    category: "ai_videos",
+    thumbnail: "assets/portfolio/thumbnails/AI_video_image.webp",
+    videoUrl: "assets/videos/video1.mp4",
+    isVideo: true,
+  },
 ];
 
 // Sort the portfolioItems array by id
@@ -316,6 +326,7 @@ function initPortfolio() {
   let currentCategory = "all";
   let currentItemIndex = 0;
   let preloadedImages = new Map(); // For caching preloaded images
+  let videoPlayers = new Map(); // For tracking video players
 
   // Create portfolio items
   function renderPortfolioItems(category) {
@@ -340,14 +351,18 @@ function initPortfolio() {
       portfolioItem.dataset.category = item.category;
       portfolioItem.dataset.id = item.id;
 
+      // Add video play icon overlay if this is a video item
+      const videoOverlay = item.isVideo ? '<div class="video-overlay"><i class="fas fa-play"></i></div>' : '';
+      
       portfolioItem.innerHTML = `
                 <img src="${item.thumbnail}" alt="${item.title}" loading="lazy">
+                ${videoOverlay}
                 <div class="portfolio-item-info">
                     <h3>${item.title}</h3>
-                    <p>${item.category}</p>
+                    <p>${item.category.replace('_', ' ')}</p>
                 </div>
                 <div class="portfolio-item-hover">
-                    <span>View Details</span>
+                    <span>${item.isVideo ? 'Play Video' : 'View Details'}</span>
                 </div>
             `;
 
@@ -367,17 +382,25 @@ function initPortfolio() {
     animatePortfolioItems();
 
     // Start preloading the first few full-size images
-    preloadNextImages(filteredItems, 0, 3);
+    preloadNextItems(filteredItems, 0, 3);
   }
 
-  // Preload images for better performance when navigating
-  function preloadNextImages(items, startIdx, count) {
+  // Preload images and video thumbnails for better performance when navigating
+  function preloadNextItems(items, startIdx, count) {
     for (let i = 0; i < count && i + startIdx < items.length; i++) {
       const item = items[i + startIdx];
       if (!preloadedImages.has(item.id)) {
-        const img = new Image();
-        img.src = item.image;
-        preloadedImages.set(item.id, img);
+        if (item.isVideo) {
+          // For videos, just preload the thumbnail
+          const img = new Image();
+          img.src = item.thumbnail;
+          preloadedImages.set(item.id, img);
+        } else {
+          // For images, preload the full image
+          const img = new Image();
+          img.src = item.image;
+          preloadedImages.set(item.id, img);
+        }
       }
     }
   }
@@ -655,7 +678,7 @@ function initPortfolio() {
     });
   }
 
-  // Enhanced modal functionality with image optimization
+  // Enhanced modal functionality with image and video support
   function openModal(itemId) {
     if (!modal) return;
 
@@ -666,18 +689,60 @@ function initPortfolio() {
     currentItemIndex = portfolioItems.indexOf(item);
 
     // Update modal content
-    const modalImage = modal.querySelector(".modal-image");
+    const modalImageContainer = modal.querySelector(".modal-image-container");
     const modalTitle = modal.querySelector(".modal-title");
     const modalDesc = modal.querySelector(".modal-description");
     const modalCategory = modal.querySelector(".modal-category");
-    // const modalDate = modal.querySelector(".modal-date");
 
-    // Show loading state
-    if (modalImage) {
-      modalImage.classList.add("loading");
+    // Clear previous content
+    modalImageContainer.innerHTML = '';
+    
+    // Check if item is a video or an image and create appropriate element
+    if (item.isVideo) {
+      // Create video element
+      const videoElement = document.createElement('video');
+      videoElement.className = 'modal-video';
+      videoElement.controls = true;
+      videoElement.loop = false;
+      videoElement.preload = 'metadata';
+      videoElement.poster = item.thumbnail;
+      
+      // Add source
+      const source = document.createElement('source');
+      source.src = item.videoUrl;
+      source.type = 'video/mp4';
+      
+      videoElement.appendChild(source);
+      
+      // Add fallback text
+      videoElement.innerHTML += 'Your browser does not support the video tag.';
+      
+      // Append to modal
+      modalImageContainer.appendChild(videoElement);
+      
+      // Store reference to video for later control
+      videoPlayers.set(itemId, videoElement);
+      
+      // Play when ready
+      videoElement.addEventListener('canplay', () => {
+        // Wait a bit to ensure modal is fully visible
+        setTimeout(() => {
+          try {
+            videoElement.play();
+          } catch (error) {
+            console.warn('Auto-play prevented:', error);
+          }
+        }, 300);
+      });
+    } else {
+      // Create image element for non-video items
+      const modalImage = document.createElement('img');
+      modalImage.className = 'modal-image';
+      modalImage.classList.add('loading');
       modalImage.src = item.thumbnail; // Show thumbnail first
+      modalImageContainer.appendChild(modalImage);
 
-      // Always update to full image regardless of preloading status
+      // Load full image
       const updateFullImage = () => {
         modalImage.src = item.image;
         modalImage.classList.remove("loading");
@@ -685,10 +750,8 @@ function initPortfolio() {
 
       // Check if image is already preloaded
       if (preloadedImages.has(item.id)) {
-        // If already preloaded, switch to full image immediately
-        setTimeout(updateFullImage, 100); // Small timeout for smoother transition
+        setTimeout(updateFullImage, 100);
       } else {
-        // If not preloaded, load it now
         const fullImg = new Image();
         fullImg.onload = updateFullImage;
         fullImg.onerror = () => {
@@ -702,34 +765,45 @@ function initPortfolio() {
 
     if (modalTitle) modalTitle.textContent = item.title;
     if (modalDesc) modalDesc.textContent = item.description;
-    if (modalCategory) modalCategory.textContent = `Category: ${item.category}`;
-    // if (modalDate) modalDate.textContent = `Created: ${item.date}`;
+    if (modalCategory) modalCategory.textContent = `Category: ${item.category.replace('_', ' ')}`;
 
     // Show modal with animation
     modal.classList.add("active");
     document.body.style.overflow = "hidden";
 
-    // Preload next and previous images for smoother navigation
-    preloadAdjacentImages(currentItemIndex);
+    // Preload adjacent items
+    preloadAdjacentItems(currentItemIndex);
   }
 
-  // Preload adjacent images for smoother modal navigation
-  function preloadAdjacentImages(index) {
+  // Preload adjacent items (images or video thumbnails) for smoother modal navigation
+  function preloadAdjacentItems(index) {
     let nextIndex = (index + 1) % portfolioItems.length;
     let prevIndex = index - 1 < 0 ? portfolioItems.length - 1 : index - 1;
 
-    // Preload next image
+    // Preload next item
     if (!preloadedImages.has(portfolioItems[nextIndex].id)) {
-      const nextImg = new Image();
-      nextImg.src = portfolioItems[nextIndex].image;
-      preloadedImages.set(portfolioItems[nextIndex].id, nextImg);
+      if (portfolioItems[nextIndex].isVideo) {
+        const nextImg = new Image();
+        nextImg.src = portfolioItems[nextIndex].thumbnail;
+        preloadedImages.set(portfolioItems[nextIndex].id, nextImg);
+      } else {
+        const nextImg = new Image();
+        nextImg.src = portfolioItems[nextIndex].image;
+        preloadedImages.set(portfolioItems[nextIndex].id, nextImg);
+      }
     }
 
-    // Preload previous image
+    // Preload previous item
     if (!preloadedImages.has(portfolioItems[prevIndex].id)) {
-      const prevImg = new Image();
-      prevImg.src = portfolioItems[prevIndex].image;
-      preloadedImages.set(portfolioItems[prevIndex].id, prevImg);
+      if (portfolioItems[prevIndex].isVideo) {
+        const prevImg = new Image();
+        prevImg.src = portfolioItems[prevIndex].thumbnail;
+        preloadedImages.set(portfolioItems[prevIndex].id, prevImg);
+      } else {
+        const prevImg = new Image();
+        prevImg.src = portfolioItems[prevIndex].image;
+        preloadedImages.set(portfolioItems[prevIndex].id, prevImg);
+      }
     }
   }
 
@@ -738,6 +812,15 @@ function initPortfolio() {
     if (modal) {
       modal.classList.remove("active");
       document.body.style.overflow = "";
+      
+      // Pause any playing videos
+      const currentItem = portfolioItems[currentItemIndex];
+      if (currentItem && currentItem.isVideo) {
+        const videoPlayer = videoPlayers.get(currentItem.id);
+        if (videoPlayer) {
+          videoPlayer.pause();
+        }
+      }
     }
   }
 
@@ -758,7 +841,7 @@ function initPortfolio() {
     });
   }
 
-  // Modal navigation with fixed functionality and optimized image loading
+  // Modal navigation with fixed functionality and optimized loading
   function navigateModal(direction) {
     let filteredItems =
       currentCategory === "all"
@@ -766,6 +849,15 @@ function initPortfolio() {
         : portfolioItems.filter((item) => item.category === currentCategory);
 
     if (filteredItems.length === 0) return;
+
+    // Pause current video if applicable
+    const currentItem = portfolioItems[currentItemIndex];
+    if (currentItem && currentItem.isVideo) {
+      const videoPlayer = videoPlayers.get(currentItem.id);
+      if (videoPlayer) {
+        videoPlayer.pause();
+      }
+    }
 
     let newIndex;
     if (direction === "next") {
@@ -783,11 +875,10 @@ function initPortfolio() {
     currentItemIndex = portfolioItems.indexOf(newItem);
 
     // Update modal content with animation
-    const modalImage = modal.querySelector(".modal-image");
+    const modalImageContainer = modal.querySelector(".modal-image-container");
     const modalTitle = modal.querySelector(".modal-title");
     const modalDesc = modal.querySelector(".modal-description");
     const modalCategory = modal.querySelector(".modal-category");
-    // const modalDate = modal.querySelector(".modal-date");
 
     // Fade out current content
     gsap.to([modalTitle, modalDesc, modalCategory], {
@@ -795,21 +886,54 @@ function initPortfolio() {
       y: direction === "next" ? -20 : 20,
       duration: 0.3,
       onComplete: () => {
-        // Update content
-        if (modalImage) {
-          modalImage.classList.add("loading");
-          // Use thumbnail first for fast transition
+        // Clear container
+        modalImageContainer.innerHTML = '';
+        
+        // Create appropriate element based on type
+        if (newItem.isVideo) {
+          // Create video element
+          const videoElement = document.createElement('video');
+          videoElement.className = 'modal-video';
+          videoElement.controls = true;
+          videoElement.loop = false;
+          videoElement.preload = 'metadata';
+          videoElement.poster = newItem.thumbnail;
+          
+          const source = document.createElement('source');
+          source.src = newItem.videoUrl;
+          source.type = 'video/mp4';
+          
+          videoElement.appendChild(source);
+          videoElement.innerHTML += 'Your browser does not support the video tag.';
+          
+          modalImageContainer.appendChild(videoElement);
+          
+          // Store reference and autoplay when ready
+          videoPlayers.set(newItem.id, videoElement);
+          videoElement.addEventListener('canplay', () => {
+            setTimeout(() => {
+              try {
+                videoElement.play();
+              } catch (error) {
+                console.warn('Auto-play prevented:', error);
+              }
+            }, 300);
+          });
+        } else {
+          // For images
+          const modalImage = document.createElement('img');
+          modalImage.className = 'modal-image';
+          modalImage.classList.add('loading');
           modalImage.src = newItem.thumbnail;
-
+          modalImageContainer.appendChild(modalImage);
+          
           // Then load full image if needed
           if (preloadedImages.has(newItem.id)) {
-            // We already have the preloaded image
             setTimeout(() => {
               modalImage.src = newItem.image;
               modalImage.classList.remove("loading");
-            }, 50); // Small delay for smoother transition
+            }, 50);
           } else {
-            // Need to load the full image
             const fullImg = new Image();
             fullImg.onload = function () {
               modalImage.src = newItem.image;
@@ -822,9 +946,7 @@ function initPortfolio() {
 
         if (modalTitle) modalTitle.textContent = newItem.title;
         if (modalDesc) modalDesc.textContent = newItem.description;
-        if (modalCategory)
-          modalCategory.textContent = `Category: ${newItem.category}`;
-        // if (modalDate) modalDate.textContent = `Created: ${newItem.date}`;
+        if (modalCategory) modalCategory.textContent = `Category: ${newItem.category.replace('_', ' ')}`;
 
         // Fade in new content
         gsap.to([modalTitle, modalDesc, modalCategory], {
@@ -833,8 +955,8 @@ function initPortfolio() {
           duration: 0.3,
         });
 
-        // Preload the next image in the navigation sequence for smoother experience
-        preloadAdjacentImages(currentItemIndex);
+        // Preload the adjacent items
+        preloadAdjacentItems(currentItemIndex);
       },
     });
   }
@@ -875,6 +997,20 @@ function initPortfolio() {
       navigateModal("prev");
     } else if (e.key === "ArrowRight") {
       navigateModal("next");
+    } else if (e.key === " ") {
+      // Space bar to play/pause video
+      const currentItem = portfolioItems[currentItemIndex];
+      if (currentItem && currentItem.isVideo) {
+        const video = videoPlayers.get(currentItem.id);
+        if (video) {
+          if (video.paused) {
+            video.play();
+          } else {
+            video.pause();
+          }
+          e.preventDefault(); // Prevent page scrolling
+        }
+      }
     }
   });
 

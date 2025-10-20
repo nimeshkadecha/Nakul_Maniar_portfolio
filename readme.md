@@ -29,8 +29,9 @@ Built with cutting-edge web technologies, this portfolio offers an immersive exp
 - **Smooth Scrolling** - Seamless navigation between sections
 
 ### 🎨 **Portfolio Showcase**
-- **Smart Filtering** - Categorize work by type (Characters, Backgrounds, Concepts, etc.)
+- **Smart Filtering** - Categorize work by type (Characters, Backgrounds, Concepts, Videos, etc.)
 - **Modal Gallery** - Full-screen image viewing with navigation
+- **Video Playback** - Integrated video player for AI-generated animations
 - **Responsive Grid** - Adaptive layout for all screen sizes
 - **Lazy Loading** - Optimized image loading for better performance
 
